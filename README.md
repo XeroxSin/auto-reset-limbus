@@ -72,14 +72,14 @@ The `configs/config.json` in this repository is an **example**: it uses every co
 
 A turn passes this example when all of these hold:
 
-| constraint | meaning |
-|---|---|
-| `heathcliff_first` | Heathcliff acts first (position 0). |
-| `dq_in_front_three` | Don Quixote's first action is in positions 0, 1 or 2. |
-| `sinclair_before_ishmael` | Sinclair acts before Ishmael. |
-| `dq_next_s3` | Don Quixote's next skill is a Skill 3. |
+| constraint                    | meaning                                                                                                                                                           |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `heathcliff_first`          | Heathcliff acts first (position 0).                                                                                                                               |
+| `dq_in_front_three`         | Don Quixote's first action is in positions 0, 1 or 2.                                                                                                             |
+| `sinclair_before_ishmael`   | Sinclair acts before Ishmael.                                                                                                                                     |
+| `dq_next_s3`                | Don Quixote's next skill is a Skill 3.                                                                                                                            |
 | `heathcliff_or_ishmael_top` | Heathcliff's top skill is a Skill 3 (`heathcliff_top_s3`), **or** at least one of Ishmael's columns has a Skill 2 or 3 on top (`ishmael_top_s2_or_s3`). |
-| `dq_not_last` | Don Quixote is **not** at position 5. The position check is written inline inside the `not`. |
+| `dq_not_last`               | Don Quixote is**not** at position 5. The position check is written inline inside the `not`.                                                               |
 
 `heathcliff_top_s3` and `ishmael_top_s2_or_s3` don't have to pass on their own, because `heathcliff_or_ishmael_top` uses them.
 
@@ -96,14 +96,14 @@ Names are case-sensitive.
 
 Each constraint has an id of your choice (the key) and two fields: a `constraint_type` and its `constraint_info`. The first three types check the battle; `and`, `or` and `not` combine other constraints (see [Combining constraints](#combining-constraints)).
 
-| `constraint_type` | `constraint_info` | passes when |
-|---|---|---|
-| `order_absolute` | `unit`, `position` | the unit's position in the action order is `position`. Positions count from **0** (leftmost). |
-| `order_relative` | `unit`, `relation` (`"before"` or `"after"`), `other` | `unit` acts before or after `other` |
-| `skill_tier` | `unit`, `slot` (`"bottom"`, `"top"` or `"next"`), `tier` (1, 2 or 3) | the unit's skill in that slot has that tier |
-| `and` | a list of constraints | every listed constraint passes |
-| `or` | a list of constraints | at least one listed constraint passes |
-| `not` | one constraint | that constraint fails |
+| `constraint_type` | `constraint_info`                                                              | passes when                                                                                          |
+| ------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `order_absolute`  | `unit`, `position`                                                           | the unit's position in the action order is`position`. Positions count from **0** (leftmost). |
+| `order_relative`  | `unit`, `relation` (`"before"` or `"after"`), `other`                  | `unit` acts before or after `other`                                                              |
+| `skill_tier`      | `unit`, `slot` (`"bottom"`, `"top"` or `"next"`), `tier` (1, 2 or 3) | the unit's skill in that slot has that tier                                                          |
+| `and`             | a list of constraints                                                            | every listed constraint passes                                                                       |
+| `or`              | a list of constraints                                                            | at least one listed constraint passes                                                                |
+| `not`             | one constraint                                                                   | that constraint fails                                                                                |
 
 - `position` and `tier` can also be a list of allowed values, e.g. `"position": [0, 1]` or `"tier": [2, 3]`.
 - `slot` refers to the skill icons for each unit:
@@ -113,12 +113,12 @@ Each constraint has an id of your choice (the key) and two fields: a `constraint
 
 **Units.** `"unit": "Faust"` refers to every action column Faust has. A sinner with more than one speed die can have several columns. To pick specific columns, use the object form, `{"sinner": "Faust", "column": ...}`:
 
-| `column` | the constraint passes when |
-|---|---|
-| `"all"` (default) | every column of that sinner passes |
-| `"any"` | at least one column passes |
-| `"first"` / `"last"` | the leftmost / rightmost column passes |
-| `0`, `1`, … | that specific column of the sinner (counted from the left) passes |
+| `column`               | the constraint passes when                                        |
+| ------------------------ | ----------------------------------------------------------------- |
+| `"all"` (default)      | every column of that sinner passes                                |
+| `"any"`                | at least one column passes                                        |
+| `"first"` / `"last"` | the leftmost / rightmost column passes                            |
+| `0`, `1`, …         | that specific column of the sinner (counted from the left) passes |
 
 ### Combining constraints
 
@@ -227,14 +227,14 @@ check 3:
 
 ### Other tools
 
-| Command | What it does |
-|---|---|
+| Command                                                | What it does                                                                                                                                            |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `python tools/verify_state.py CONFIG STATE.json ...` | Checks saved reads against a config, without touching the game. The exit code is 0 for valid, 1 for invalid, 3 for unreadable and 2 for a config error. |
-| `python tools/verify_state.py CONFIG --live` | Captures the game once and checks it, without resetting. |
-| `python tools/battle_state.py [-c CONFIG]` | Captures the game and saves the read (order, identities, tiers) to `output/`. |
-| `python tools/battle_state.py screenshot.png` | Reads a saved screenshot instead of the live game. |
-| `python tools/retry_stage.py` | Presses Esc and clicks Retry Stage once. |
-| `python tools/capture_screen.py` | Saves a screenshot of the game area. |
+| `python tools/verify_state.py CONFIG --live`         | Captures the game once and checks it, without resetting.                                                                                                |
+| `python tools/battle_state.py [-c CONFIG]`           | Captures the game and saves the read (order, identities, tiers) to`output/`.                                                                          |
+| `python tools/battle_state.py screenshot.png`        | Reads a saved screenshot instead of the live game.                                                                                                      |
+| `python tools/retry_stage.py`                        | Presses Esc and clicks Retry Stage once.                                                                                                                |
+| `python tools/capture_screen.py`                     | Saves a screenshot of the game area.                                                                                                                    |
 
 Each tool prints its full usage with `--help`.
 
@@ -249,7 +249,7 @@ Each tool prints its full usage with `--help`.
 
 This project isn't affiliated with or endorsed by Project Moon. Limbus Company and all related names and art are trademarks and copyrights of Project Moon. The assets are included only so the screen recognition can work. If you are a rights holder and want something removed, please open an issue.
 
-The human-like mouse movement in `tools/humanmouse/movement/` comes from **Charge Grinder** 3.5.0 (GPL-3.0); the movement model was designed by Walpth. The screen-reading approach was also inspired by Charge Grinder.
+The human-like mouse movement in `tools/humanmouse/movement/` comes from **[Charge Grinder](https://github.com/Walpth/Charge-Grinder)** 3.5.0 (GPL-3.0); the movement model was designed by Walpth. The screen-reading approach was also inspired by Charge Grinder.
 
 Automating input may be against the game's terms of service. Use this tool at your own risk.
 
