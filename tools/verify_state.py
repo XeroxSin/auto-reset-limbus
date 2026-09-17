@@ -6,13 +6,16 @@ Config (JSON, see docs/verify-config.md):
       "constraints": {
         "<id>": {"constraint_type": "order_absolute" | "order_relative" | "skill_tier",
                  "constraint_info": {...}},
+        "<id>": {"constraint_type": "and" | "or",
+                 "constraint_info": ["<id>" or {constraint}, ...]},
+        "<id>": {"constraint_type": "not", "constraint_info": "<id>" or {constraint}},
         ...
-      },
-      "logic": [{"or": ["<id>", "<id>"]}, ...]        # optional; unreferenced ids are ANDed
+      }
     }
 
 Every constraint is True, False or unknown (a unit is missing, a tier was not
-read, or the unit has warnings). The result is:
+read, or the unit has warnings). Constraints that no and/or/not constraint uses
+must all be True. The result is:
     valid        exit 0   stop
     invalid      exit 1   retry the stage
     unreadable   exit 3   read the screen again (--live does, up to 3 reads in
@@ -66,7 +69,7 @@ def known_sinners():
     return {e["sinner"] for e in json.loads(MANIFEST.read_text(encoding="utf-8"))}
 
 
-def parse_unit(path, v, sinners):
+def parse_unit(path, v, ctx):
     if isinstance(v, str):
         v = {"sinner": v}
     if not isinstance(v, dict):
@@ -74,7 +77,7 @@ def parse_unit(path, v, sinners):
     extra = set(v) - {"sinner", "column"}
     if extra:
         fail(path, f"unknown key(s) {', '.join(sorted(extra))}")
-    if v.get("sinner") not in sinners:
+    if v.get("sinner") not in ctx["sinners"]:
         fail(f"{path}.sinner", f"{v.get('sinner')!r} is not in sinners")
     column = v.get("column", "all")
     if not (column in COLUMNS or is_int(column) and column >= 0):
@@ -83,7 +86,7 @@ def parse_unit(path, v, sinners):
 
 
 def int_list(ok, what):
-    def parse(path, v, sinners):
+    def parse(path, v, ctx):
         vals = v if isinstance(v, list) else [v]
         if not vals or not all(is_int(x) and ok(x) for x in vals):
             fail(path, f"expected {what} or a list of them")
@@ -92,7 +95,7 @@ def int_list(ok, what):
 
 
 def choice(options):
-    def parse(path, v, sinners):
+    def parse(path, v, ctx):
         if v not in options:
             fail(path, f"expected one of {', '.join(options)}")
         return v
@@ -106,19 +109,61 @@ FIELDS = {  # constraint_type -> {constraint_info key: parser}
     "skill_tier": {"unit": parse_unit, "slot": choice(SLOTS),
                    "tier": int_list(lambda x: x in TIERS, "a tier 1-3")},
 }
+LOGIC = ("and", "or", "not")    # constraint_info: the constraints they apply to ("not": exactly one)
+TYPES = (*FIELDS, *LOGIC)
 
 
-def parse_constraint(path, c, sinners):
+def parse_logic(path, cid, ctype, info, ctx, out):
+    """Items are constraint ids or inline constraint objects; inline ones are
+    stored in `out` as <cid>.<index>. Returns the list of member ids."""
+    if ctype == "not":
+        if isinstance(info, list):
+            if len(info) != 1:
+                fail(path, "not takes exactly one constraint")
+            paths = [f"{path}[0]"]
+        else:
+            info, paths = [info], [path]
+    else:
+        if not isinstance(info, list) or not info:
+            fail(path, f"{ctype} takes a non-empty list of constraints (ids or constraint objects)")
+        paths = [f"{path}[{i}]" for i in range(len(info))]
+
+    ids = []
+    for i, (item, ipath) in enumerate(zip(info, paths)):
+        if isinstance(item, str):
+            if item not in ctx["ids"]:
+                fail(ipath, f"unknown constraint {item!r}")
+            ids.append(item)
+        elif isinstance(item, dict):
+            child = f"{cid}.{i}"
+            if child in ctx["ids"]:
+                fail(ipath, f"the inline constraint's id {child!r} is already used by another constraint")
+            parse_constraint(ipath, child, item, ctx, out)
+            ids.append(child)
+        else:
+            fail(ipath, "expected a constraint id or a constraint object")
+    if len(set(ids)) != len(ids):
+        fail(path, "the same constraint is listed twice")
+    return ids
+
+
+def parse_constraint(path, cid, c, ctx, out):
+    """Validate one constraint and add it (after any inline members) to `out`."""
     if not isinstance(c, dict):
         fail(path, "expected an object")
     extra = set(c) - {"constraint_type", "constraint_info"}
     if extra:
         fail(path, f"unknown key(s) {', '.join(sorted(extra))}")
     ctype = c.get("constraint_type")
-    if ctype not in FIELDS:
-        fail(f"{path}.constraint_type", f"expected one of {', '.join(FIELDS)}")
+    if ctype not in TYPES:
+        fail(f"{path}.constraint_type", f"expected one of {', '.join(TYPES)}")
     path += ".constraint_info"
-    info = c.get("constraint_info")
+    if "constraint_info" not in c:
+        fail(path, "missing")
+    info = c["constraint_info"]
+    if ctype in LOGIC:
+        out[cid] = {"constraint_type": ctype, "constraint_info": parse_logic(path, cid, ctype, info, ctx, out)}
+        return
     if not isinstance(info, dict):
         fail(path, "expected an object")
     fields = FIELDS[ctype]
@@ -127,32 +172,43 @@ def parse_constraint(path, c, sinners):
         fail(path, f"unknown key(s) {', '.join(sorted(extra))}")
     if missing:
         fail(path, f"missing {', '.join(missing)}")
-    return {"constraint_type": ctype,
-            "constraint_info": {k: parse(f"{path}.{k}", info[k], sinners) for k, parse in fields.items()}}
+    out[cid] = {"constraint_type": ctype,
+                "constraint_info": {k: parse(f"{path}.{k}", info[k], ctx) for k, parse in fields.items()}}
 
 
-def parse_expr(path, e, constraints):
-    if isinstance(e, str):
-        if e not in constraints:
-            fail(path, f"unknown constraint {e!r}")
-        return e
-    if not isinstance(e, dict) or len(e) != 1:
-        fail(path, "expected a constraint id or one of {\"and\": [...]}, {\"or\": [...]}, {\"not\": ...}")
-    (op, arg), = e.items()
-    if op == "not":
-        return {"not": parse_expr(f"{path}.not", arg, constraints)}
-    if op not in ("and", "or"):
-        fail(path, f"unknown operator {op!r} (use and, or, not)")
-    if not isinstance(arg, list) or not arg:
-        fail(f"{path}.{op}", "expected a non-empty list")
-    return {op: [parse_expr(f"{path}.{op}[{i}]", x, constraints) for i, x in enumerate(arg)]}
+def members(c):
+    """Ids an and/or/not constraint applies to (empty for other types)."""
+    return c["constraint_info"] if c["constraint_type"] in LOGIC else []
+
+
+def check_cycles(constraints):
+    done, active = set(), []
+
+    def visit(cid):
+        if cid in active:
+            loop = " -> ".join(active[active.index(cid):] + [cid])
+            fail(f"constraints.{cid}.constraint_info", f"loop: {loop}")
+        if cid in done:
+            return
+        active.append(cid)
+        for m in members(constraints[cid]):
+            visit(m)
+        active.pop()
+        done.add(cid)
+
+    for cid in constraints:
+        visit(cid)
 
 
 def parse_config(raw):
-    """Validate a config dict and return it normalised (unit refs as dicts, tiers/positions as lists)."""
+    """Validate a config dict and return it normalised: unit refs as dicts,
+    tiers/positions as lists, and/or/not as lists of ids (inline ones included)."""
     if not isinstance(raw, dict):
         fail("config", "expected an object")
-    extra = set(raw) - {"sinners", "constraints", "logic"}
+    if "logic" in raw:
+        fail("logic", "the logic section was replaced by constraints of type \"and\", \"or\" "
+                      "and \"not\" (see the README)")
+    extra = set(raw) - {"sinners", "constraints"}
     if extra:
         fail("config", f"unknown key(s) {', '.join(sorted(extra))}")
 
@@ -168,14 +224,12 @@ def parse_config(raw):
     constraints = raw.get("constraints")
     if not isinstance(constraints, dict) or not constraints:
         fail("constraints", "expected a non-empty object")
-    constraints = {cid: parse_constraint(f"constraints.{cid}", c, set(sinners))
-                   for cid, c in constraints.items()}
-
-    logic = raw.get("logic", [])
-    if not isinstance(logic, list):
-        fail("logic", "expected a list")
-    logic = [parse_expr(f"logic[{i}]", e, constraints) for i, e in enumerate(logic)]
-    return {"sinners": list(sinners), "constraints": constraints, "logic": logic}
+    ctx = {"sinners": set(sinners), "ids": set(constraints)}
+    out = {}
+    for cid, c in constraints.items():
+        parse_constraint(f"constraints.{cid}", cid, c, ctx, out)
+    check_cycles(out)
+    return {"sinners": list(sinners), "constraints": out}
 
 
 def load_config(path):
@@ -290,49 +344,43 @@ CHECKS = {
 }
 
 
-def referenced(expr):
-    if isinstance(expr, str):
-        return {expr}
-    (op, arg), = expr.items()
-    return referenced(arg) if op == "not" else set().union(*map(referenced, arg))
-
-
-def evaluate(expr, results):
-    if isinstance(expr, str):
-        return results[expr]
-    (op, arg), = expr.items()
-    if op == "not":
-        v = evaluate(arg, results)
-        return None if v is None else not v
-    return (k_and if op == "and" else k_or)(evaluate(e, results) for e in arg)
-
-
-def expr_text(expr):
-    if isinstance(expr, str):
-        return expr
-    (op, arg), = expr.items()
-    return f"not {expr_text(arg)}" if op == "not" else f"{op}({', '.join(map(expr_text, arg))})"
-
-
 def verify(state, config):
     """state: battle_state output; config: from load_config/parse_config.
 
     Returns {"status": "valid"|"invalid"|"unreadable",
-             "constraints": {id: True|False|None},
-             "logic": [(text, True|False|None), ...],   one per logic entry
-             "reasons": {id: [...]}}   (only for constraints that were not True)
+             "constraints": {id: True|False|None},        in config order
+             "reasons": {id: [...]},                      only for checks that were not True
+             "roots": [ids no and/or/not constraint uses],
+             "logic": {and/or/not id: {"type": ..., "members": [ids]}}}
+    The roots must all be True for "valid".
     """
     st = State(state)
+    constraints = config["constraints"]
     results, reasons = {}, {}
-    for cid, c in config["constraints"].items():
-        r = []
-        results[cid] = CHECKS[c["constraint_type"]](st, c["constraint_info"], r)
-        if results[cid] is not True and r:
-            reasons[cid] = list(dict.fromkeys(r))
-    used = set().union(*map(referenced, config["logic"]))
-    logic = [(expr_text(e), evaluate(e, results)) for e in config["logic"]]
-    terms = [v for _, v in logic] + [v for cid, v in results.items() if cid not in used]
-    return {"status": STATUS[k_and(terms)], "constraints": results, "logic": logic, "reasons": reasons}
+
+    def value(cid):
+        if cid not in results:
+            c = constraints[cid]
+            info = c["constraint_info"]
+            if c["constraint_type"] == "not":
+                v = value(info[0])
+                results[cid] = None if v is None else not v
+            elif c["constraint_type"] in LOGIC:
+                results[cid] = (k_and if c["constraint_type"] == "and" else k_or)(value(m) for m in info)
+            else:
+                r = []
+                results[cid] = CHECKS[c["constraint_type"]](st, info, r)
+                if results[cid] is not True and r:
+                    reasons[cid] = list(dict.fromkeys(r))
+        return results[cid]
+
+    results = {cid: value(cid) for cid in constraints}
+    used = {m for c in constraints.values() for m in members(c)}
+    roots = [cid for cid in constraints if cid not in used]
+    logic = {cid: {"type": c["constraint_type"], "members": members(c)}
+             for cid, c in constraints.items() if c["constraint_type"] in LOGIC}
+    return {"status": STATUS[k_and(results[cid] for cid in roots)], "constraints": results,
+            "reasons": reasons, "roots": roots, "logic": logic}
 
 
 def verify_live(read_state, config, attempts=MAX_READS):
@@ -360,13 +408,20 @@ def mark(v):
 
 
 def report_lines(name, result):
-    """Every constraint, then every logic group, then the verdict."""
+    """Every constraint as a tree (and/or/not members indented under them), then the verdict."""
     lines = [f"{name}:"]
-    for cid, v in result["constraints"].items():
-        lines.append(f"  {mark(v)}  {cid}")
-        lines += [f"             {r}" for r in result["reasons"].get(cid, [])]
-    for text, v in result.get("logic", []):
-        lines.append(f"  {mark(v)}  logic: {text}")
+    logic = result["logic"]
+
+    def add(cid, depth):
+        pad = "  " * (depth + 1)
+        kind = f" ({logic[cid]['type']})" if cid in logic else ""
+        lines.append(f"{pad}{mark(result['constraints'][cid])}  {cid}{kind}")
+        lines.extend(f"{pad}           {r}" for r in result["reasons"].get(cid, []))
+        for m in logic.get(cid, {}).get("members", []):
+            add(m, depth + 1)
+
+    for cid in result["roots"]:
+        add(cid, 0)
     reads = f" after {result['reads']} read(s)" if "reads" in result else ""
     lines.append(f"  => {result['status'].upper()}{reads}")
     if "note" in result:

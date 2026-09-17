@@ -24,9 +24,17 @@
     "ishmael_top_s2_or_s3": {
       "constraint_type": "skill_tier",
       "constraint_info": {"unit": {"sinner": "Ishmael", "column": "any"}, "slot": "top", "tier": [2, 3]}
+    },
+    "heathcliff_or_ishmael_top": {
+      "constraint_type": "or",
+      "constraint_info": ["heathcliff_top_s3", "ishmael_top_s2_or_s3"]
+    },
+    "dq_not_last": {
+      "constraint_type": "not",
+      "constraint_info": {
+        "constraint_type": "order_absolute",
+        "constraint_info": {"unit": "Don Quixote", "position": 5}
+      }
     }
-  },
-  "logic": [
-    {"or": ["heathcliff_top_s3", "ishmael_top_s2_or_s3"]}
-  ]
+  }
 }

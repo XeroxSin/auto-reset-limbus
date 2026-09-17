@@ -54,11 +54,19 @@ The `configs/config.json` in this repository is an **example**: it uses every co
     "ishmael_top_s2_or_s3": {
       "constraint_type": "skill_tier",
       "constraint_info": {"unit": {"sinner": "Ishmael", "column": "any"}, "slot": "top", "tier": [2, 3]}
+    },
+    "heathcliff_or_ishmael_top": {
+      "constraint_type": "or",
+      "constraint_info": ["heathcliff_top_s3", "ishmael_top_s2_or_s3"]
+    },
+    "dq_not_last": {
+      "constraint_type": "not",
+      "constraint_info": {
+        "constraint_type": "order_absolute",
+        "constraint_info": {"unit": "Don Quixote", "position": 5}
+      }
     }
-  },
-  "logic": [
-    {"or": ["heathcliff_top_s3", "ishmael_top_s2_or_s3"]}
-  ]
+  }
 }
 ```
 
@@ -70,9 +78,10 @@ A turn passes this example when all of these hold:
 | `dq_in_front_three` | Don Quixote's first action is in positions 0, 1 or 2. |
 | `sinclair_before_ishmael` | Sinclair acts before Ishmael. |
 | `dq_next_s3` | Don Quixote's next skill is a Skill 3. |
-| `logic` | Heathcliff's top skill is a Skill 3 (`heathcliff_top_s3`), **or** at least one of Ishmael's columns has a Skill 2 or 3 on top (`ishmael_top_s2_or_s3`). |
+| `heathcliff_or_ishmael_top` | Heathcliff's top skill is a Skill 3 (`heathcliff_top_s3`), **or** at least one of Ishmael's columns has a Skill 2 or 3 on top (`ishmael_top_s2_or_s3`). |
+| `dq_not_last` | Don Quixote is **not** at position 5. The position check is written inline inside the `not`. |
 
-Any other sinners on the team are ignored.
+`heathcliff_top_s3` and `ishmael_top_s2_or_s3` don't have to pass on their own, because `heathcliff_or_ishmael_top` uses them.
 
 ### `sinners`
 
@@ -85,13 +94,16 @@ Names are case-sensitive.
 
 ### `constraints`
 
-Each constraint has an id of your choice (the key) and two fields: a `constraint_type` and its `constraint_info`.
+Each constraint has an id of your choice (the key) and two fields: a `constraint_type` and its `constraint_info`. The first three types check the battle; `and`, `or` and `not` combine other constraints (see [Combining constraints](#combining-constraints)).
 
 | `constraint_type` | `constraint_info` | passes when |
 |---|---|---|
 | `order_absolute` | `unit`, `position` | the unit's position in the action order is `position`. Positions count from **0** (leftmost). |
 | `order_relative` | `unit`, `relation` (`"before"` or `"after"`), `other` | `unit` acts before or after `other` |
 | `skill_tier` | `unit`, `slot` (`"bottom"`, `"top"` or `"next"`), `tier` (1, 2 or 3) | the unit's skill in that slot has that tier |
+| `and` | a list of constraints | every listed constraint passes |
+| `or` | a list of constraints | at least one listed constraint passes |
+| `not` | one constraint | that constraint fails |
 
 - `position` and `tier` can also be a list of allowed values, e.g. `"position": [0, 1]` or `"tier": [2, 3]`.
 - `slot` refers to the skill icons for each unit:
@@ -108,23 +120,49 @@ Each constraint has an id of your choice (the key) and two fields: a `constraint
 | `"first"` / `"last"` | the leftmost / rightmost column passes |
 | `0`, `1`, … | that specific column of the sinner (counted from the left) passes |
 
-### `logic` (optional)
+### Combining constraints
 
-By default, **every constraint must pass**. Use `logic` when you need "or" or "not". Each entry is one of:
+Every constraint must pass, **except** constraints used inside an `and`, `or` or `not`. Those only count through the constraint that uses them.
 
-- a constraint id;
-- `{"or": [...]}`;
-- `{"and": [...]}`;
-- `{"not": ...}`.
+For `and`, `or` and `not`, the `constraint_info` is the constraints they apply to:
 
-Entries can be nested. Everything in `logic` must hold, **and** every constraint that `logic` doesn't mention must pass.
+- **`and` / `or`:** a list with as many constraints as you want.
+- **`not`:** exactly one constraint, either on its own or as a one-item list.
 
-```json
-"logic": [
-  {"or": ["heathcliff_top_s3", "ishmael_top_s2_or_s3"]},
-  {"not": "dq_next_s3"}
-]
-```
+Each item can be either:
+
+- **the id of another constraint:**
+  ```json
+  "faust_has_s3": {"constraint_type": "or",
+                   "constraint_info": ["faust_top_s3", "faust_next_s3"]}
+  ```
+- **a whole constraint written inline.** This keeps nested conditions in one place. For example, "Faust acts first, or (Sinclair has a Skill 3 next and Sinclair is not last)":
+  ```json
+  "opening": {
+    "constraint_type": "or",
+    "constraint_info": [
+      {"constraint_type": "order_absolute", "constraint_info": {"unit": "Faust", "position": 0}},
+      {"constraint_type": "and", "constraint_info": [
+        {"constraint_type": "skill_tier", "constraint_info": {"unit": "Sinclair", "slot": "next", "tier": 3}},
+        {"constraint_type": "not", "constraint_info":
+          {"constraint_type": "order_absolute", "constraint_info": {"unit": "Sinclair", "position": 5}}}
+      ]}
+    ]
+  }
+  ```
+
+**How inline constraints are named.** Inline constraints are named after where they sit, so they can be shown in the output:
+
+- `opening.0` is the first item of `opening`;
+- `opening.1.1` is the second item inside `opening`'s second item, which is the `not`;
+- `opening.1.1.0` is the position check inside that `not`.
+
+Other constraints can't refer to these generated names.
+
+**Rules:**
+
+- A constraint can be used by more than one `and`/`or`/`not`.
+- A constraint can't include itself, directly or through others.
 
 ### Checking a config
 
@@ -159,7 +197,7 @@ python tools/auto_reset.py --save               # also save every read to output
 - **No reset limit.** Press **Ctrl+C** in the terminal to stop at any time.
 - **Mouse settings.** While it moves the mouse, "Enhance pointer precision" is turned off and pointer speed is set to the default. Both are restored when it stops.
 
-The terminal shows each check: every constraint (`valid`, `INVALID` or `unknown`), each `logic` group, and the verdict.
+The terminal shows each check: every constraint (`valid`, `INVALID` or `unknown`), then the verdict. The constraints that an `and`, `or` or `not` uses are indented under it, one level deeper for each level of nesting.
 
 ```
 check 3: capturing
@@ -169,10 +207,13 @@ check 3:
   valid    dq_in_front_three
   valid    sinclair_before_ishmael
   valid    dq_next_s3
-  INVALID  heathcliff_top_s3
-             unit 2 (Heathcliff) top is tier 2, expected 3
-  valid    ishmael_top_s2_or_s3
-  valid    logic: or(heathcliff_top_s3, ishmael_top_s2_or_s3)
+  valid    heathcliff_or_ishmael_top (or)
+    INVALID  heathcliff_top_s3
+               unit 2 (Heathcliff) top is tier 2, expected 3
+    valid    ishmael_top_s2_or_s3
+  valid    dq_not_last (not)
+    INVALID  dq_not_last.0
+               Don Quixote at order 1, expected 5
   => INVALID after 1 read(s)
    retrying the stage
 ```
