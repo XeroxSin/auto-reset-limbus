@@ -1,0 +1,10 @@
+{
+  "source": "tests/fixtures/menus/settings_menu.png (resized to 1920x1080)",
+  "box": [
+    757,
+    527,
+    409,
+    63
+  ],
+  "note": "3rd button of the Esc menu; box is x, y, w, h in 1920x1080"
+}

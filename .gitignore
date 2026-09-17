@@ -1,0 +1,13 @@
+# local notes and screenshots
+docs/
+
+# tests and fixtures (kept locally)
+tests/
+
+# run output: battle states, logs
+output/*
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/

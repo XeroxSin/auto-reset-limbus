@@ -1,0 +1,2515 @@
+[
+  {
+    "id": 10308,
+    "sinner": "Don Quixote",
+    "identity": "Blade Lineage Salsu",
+    "variant": "gacksung",
+    "path": "Don Quixote/Blade Lineage Salsu/10308_gacksung_profile.png"
+  },
+  {
+    "id": 10308,
+    "sinner": "Don Quixote",
+    "identity": "Blade Lineage Salsu",
+    "variant": "normal",
+    "path": "Don Quixote/Blade Lineage Salsu/10308_normal_profile.png"
+  },
+  {
+    "id": 10311,
+    "sinner": "Don Quixote",
+    "identity": "Cinq Assoc. East Section 3",
+    "variant": "gacksung",
+    "path": "Don Quixote/Cinq Assoc. East Section 3/10311_gacksung_profile.png"
+  },
+  {
+    "id": 10311,
+    "sinner": "Don Quixote",
+    "identity": "Cinq Assoc. East Section 3",
+    "variant": "normal",
+    "path": "Don Quixote/Cinq Assoc. East Section 3/10311_normal_profile.png"
+  },
+  {
+    "id": 10305,
+    "sinner": "Don Quixote",
+    "identity": "Cinq Assoc. South Section 5 Director",
+    "variant": "gacksung",
+    "path": "Don Quixote/Cinq Assoc. South Section 5 Director/10305_gacksung_profile.png"
+  },
+  {
+    "id": 10305,
+    "sinner": "Don Quixote",
+    "identity": "Cinq Assoc. South Section 5 Director",
+    "variant": "normal",
+    "path": "Don Quixote/Cinq Assoc. South Section 5 Director/10305_normal_profile.png"
+  },
+  {
+    "id": 10313,
+    "sinner": "Don Quixote",
+    "identity": "Heishou Pack - Wei Branch",
+    "variant": "gacksung",
+    "path": "Don Quixote/Heishou Pack - Wei Branch/10313_gacksung_profile.png"
+  },
+  {
+    "id": 10313,
+    "sinner": "Don Quixote",
+    "identity": "Heishou Pack - Wei Branch",
+    "variant": "normal",
+    "path": "Don Quixote/Heishou Pack - Wei Branch/10313_normal_profile.png"
+  },
+  {
+    "id": 10301,
+    "sinner": "Don Quixote",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Don Quixote/LCB Sinner/10301_gacksung_profile.png"
+  },
+  {
+    "id": 10312,
+    "sinner": "Don Quixote",
+    "identity": "Lobotomy E.G.O In the Name of Love and Hate",
+    "variant": "gacksung",
+    "path": "Don Quixote/Lobotomy E.G.O In the Name of Love and Hate/10312_gacksung_profile.png"
+  },
+  {
+    "id": 10312,
+    "sinner": "Don Quixote",
+    "identity": "Lobotomy E.G.O In the Name of Love and Hate",
+    "variant": "normal",
+    "path": "Don Quixote/Lobotomy E.G.O In the Name of Love and Hate/10312_normal_profile.png"
+  },
+  {
+    "id": 10307,
+    "sinner": "Don Quixote",
+    "identity": "Lobotomy E.G.O Lantern",
+    "variant": "gacksung",
+    "path": "Don Quixote/Lobotomy E.G.O Lantern/10307_gacksung_profile.png"
+  },
+  {
+    "id": 10307,
+    "sinner": "Don Quixote",
+    "identity": "Lobotomy E.G.O Lantern",
+    "variant": "normal",
+    "path": "Don Quixote/Lobotomy E.G.O Lantern/10307_normal_profile.png"
+  },
+  {
+    "id": 10304,
+    "sinner": "Don Quixote",
+    "identity": "N Corp. Mittelhammer",
+    "variant": "gacksung",
+    "path": "Don Quixote/N Corp. Mittelhammer/10304_gacksung_profile.png"
+  },
+  {
+    "id": 10304,
+    "sinner": "Don Quixote",
+    "identity": "N Corp. Mittelhammer",
+    "variant": "normal",
+    "path": "Don Quixote/N Corp. Mittelhammer/10304_normal_profile.png"
+  },
+  {
+    "id": 10303,
+    "sinner": "Don Quixote",
+    "identity": "Shi Assoc. South Section 5 Director",
+    "variant": "gacksung",
+    "path": "Don Quixote/Shi Assoc. South Section 5 Director/10303_gacksung_profile.png"
+  },
+  {
+    "id": 10303,
+    "sinner": "Don Quixote",
+    "identity": "Shi Assoc. South Section 5 Director",
+    "variant": "normal",
+    "path": "Don Quixote/Shi Assoc. South Section 5 Director/10303_normal_profile.png"
+  },
+  {
+    "id": 10309,
+    "sinner": "Don Quixote",
+    "identity": "T Corp. Class 3 Collection Staff",
+    "variant": "gacksung",
+    "path": "Don Quixote/T Corp. Class 3 Collection Staff/10309_gacksung_profile.png"
+  },
+  {
+    "id": 10309,
+    "sinner": "Don Quixote",
+    "identity": "T Corp. Class 3 Collection Staff",
+    "variant": "normal",
+    "path": "Don Quixote/T Corp. Class 3 Collection Staff/10309_normal_profile.png"
+  },
+  {
+    "id": 10314,
+    "sinner": "Don Quixote",
+    "identity": "The Index Proxy - Effloresced E.G.O Procuration",
+    "variant": "gacksung",
+    "path": "Don Quixote/The Index Proxy - Effloresced E.G.O Procuration/10314_gacksung_profile.png"
+  },
+  {
+    "id": 10314,
+    "sinner": "Don Quixote",
+    "identity": "The Index Proxy - Effloresced E.G.O Procuration",
+    "variant": "normal",
+    "path": "Don Quixote/The Index Proxy - Effloresced E.G.O Procuration/10314_normal_profile.png"
+  },
+  {
+    "id": 10310,
+    "sinner": "Don Quixote",
+    "identity": "The Manager of La Manchaland",
+    "variant": "gacksung",
+    "path": "Don Quixote/The Manager of La Manchaland/10310_gacksung_profile.png"
+  },
+  {
+    "id": 10310,
+    "sinner": "Don Quixote",
+    "identity": "The Manager of La Manchaland",
+    "variant": "normal",
+    "path": "Don Quixote/The Manager of La Manchaland/10310_normal_profile.png"
+  },
+  {
+    "id": 10306,
+    "sinner": "Don Quixote",
+    "identity": "The Middle Little Sister",
+    "variant": "gacksung",
+    "path": "Don Quixote/The Middle Little Sister/10306_gacksung_profile.png"
+  },
+  {
+    "id": 10306,
+    "sinner": "Don Quixote",
+    "identity": "The Middle Little Sister",
+    "variant": "normal",
+    "path": "Don Quixote/The Middle Little Sister/10306_normal_profile.png"
+  },
+  {
+    "id": 10302,
+    "sinner": "Don Quixote",
+    "identity": "W Corp. L3 Cleanup Agent",
+    "variant": "gacksung",
+    "path": "Don Quixote/W Corp. L3 Cleanup Agent/10302_gacksung_profile.png"
+  },
+  {
+    "id": 10302,
+    "sinner": "Don Quixote",
+    "identity": "W Corp. L3 Cleanup Agent",
+    "variant": "normal",
+    "path": "Don Quixote/W Corp. L3 Cleanup Agent/10302_normal_profile.png"
+  },
+  {
+    "id": 10208,
+    "sinner": "Faust",
+    "identity": "Blade Lineage Salsu",
+    "variant": "gacksung",
+    "path": "Faust/Blade Lineage Salsu/10208_gacksung_profile.png"
+  },
+  {
+    "id": 10208,
+    "sinner": "Faust",
+    "identity": "Blade Lineage Salsu",
+    "variant": "normal",
+    "path": "Faust/Blade Lineage Salsu/10208_normal_profile.png"
+  },
+  {
+    "id": 10216,
+    "sinner": "Faust",
+    "identity": "Dawn Office Fixer",
+    "variant": "gacksung",
+    "path": "Faust/Dawn Office Fixer/10216_gacksung_profile.png"
+  },
+  {
+    "id": 10216,
+    "sinner": "Faust",
+    "identity": "Dawn Office Fixer",
+    "variant": "normal",
+    "path": "Faust/Dawn Office Fixer/10216_normal_profile.png"
+  },
+  {
+    "id": 10212,
+    "sinner": "Faust",
+    "identity": "Heishou Pack - Mao Branch Adept",
+    "variant": "gacksung",
+    "path": "Faust/Heishou Pack - Mao Branch Adept/10212_gacksung_profile.png"
+  },
+  {
+    "id": 10212,
+    "sinner": "Faust",
+    "identity": "Heishou Pack - Mao Branch Adept",
+    "variant": "normal",
+    "path": "Faust/Heishou Pack - Mao Branch Adept/10212_normal_profile.png"
+  },
+  {
+    "id": 10201,
+    "sinner": "Faust",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Faust/LCB Sinner/10201_gacksung_profile.png"
+  },
+  {
+    "id": 10211,
+    "sinner": "Faust",
+    "identity": "LCE E.G.O Ardor Blossom Star",
+    "variant": "gacksung",
+    "path": "Faust/LCE E.G.O Ardor Blossom Star/10211_gacksung_profile.png"
+  },
+  {
+    "id": 10211,
+    "sinner": "Faust",
+    "identity": "LCE E.G.O Ardor Blossom Star",
+    "variant": "normal",
+    "path": "Faust/LCE E.G.O Ardor Blossom Star/10211_normal_profile.png"
+  },
+  {
+    "id": 10203,
+    "sinner": "Faust",
+    "identity": "Lobotomy Corp. Remnant",
+    "variant": "gacksung",
+    "path": "Faust/Lobotomy Corp. Remnant/10203_gacksung_profile.png"
+  },
+  {
+    "id": 10203,
+    "sinner": "Faust",
+    "identity": "Lobotomy Corp. Remnant",
+    "variant": "normal",
+    "path": "Faust/Lobotomy Corp. Remnant/10203_normal_profile.png"
+  },
+  {
+    "id": 10207,
+    "sinner": "Faust",
+    "identity": "Lobotomy E.G.O Regret",
+    "variant": "gacksung",
+    "path": "Faust/Lobotomy E.G.O Regret/10207_gacksung_profile.png"
+  },
+  {
+    "id": 10207,
+    "sinner": "Faust",
+    "identity": "Lobotomy E.G.O Regret",
+    "variant": "normal",
+    "path": "Faust/Lobotomy E.G.O Regret/10207_normal_profile.png"
+  },
+  {
+    "id": 10210,
+    "sinner": "Faust",
+    "identity": "MultiCrack Office Rep",
+    "variant": "gacksung",
+    "path": "Faust/MultiCrack Office Rep/10210_gacksung_profile.png"
+  },
+  {
+    "id": 10210,
+    "sinner": "Faust",
+    "identity": "MultiCrack Office Rep",
+    "variant": "normal",
+    "path": "Faust/MultiCrack Office Rep/10210_normal_profile.png"
+  },
+  {
+    "id": 10206,
+    "sinner": "Faust",
+    "identity": "Seven Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Faust/Seven Assoc. South Section 4/10206_gacksung_profile.png"
+  },
+  {
+    "id": 10206,
+    "sinner": "Faust",
+    "identity": "Seven Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Faust/Seven Assoc. South Section 4/10206_normal_profile.png"
+  },
+  {
+    "id": 10213,
+    "sinner": "Faust",
+    "identity": "Shi Assoc. East Section 3",
+    "variant": "gacksung",
+    "path": "Faust/Shi Assoc. East Section 3/10213_gacksung_profile.png"
+  },
+  {
+    "id": 10213,
+    "sinner": "Faust",
+    "identity": "Shi Assoc. East Section 3",
+    "variant": "normal",
+    "path": "Faust/Shi Assoc. East Section 3/10213_normal_profile.png"
+  },
+  {
+    "id": 10215,
+    "sinner": "Faust",
+    "identity": "The House of Spiders The Ring Apprentice",
+    "variant": "gacksung",
+    "path": "Faust/The House of Spiders The Ring Apprentice/10215_gacksung_profile.png"
+  },
+  {
+    "id": 10215,
+    "sinner": "Faust",
+    "identity": "The House of Spiders The Ring Apprentice",
+    "variant": "normal",
+    "path": "Faust/The House of Spiders The Ring Apprentice/10215_normal_profile.png"
+  },
+  {
+    "id": 10214,
+    "sinner": "Faust",
+    "identity": "The Index Proselyte 【Paper Slip】",
+    "variant": "gacksung",
+    "path": "Faust/The Index Proselyte 【Paper Slip】/10214_gacksung_profile.png"
+  },
+  {
+    "id": 10214,
+    "sinner": "Faust",
+    "identity": "The Index Proselyte 【Paper Slip】",
+    "variant": "normal",
+    "path": "Faust/The Index Proselyte 【Paper Slip】/10214_normal_profile.png"
+  },
+  {
+    "id": 10204,
+    "sinner": "Faust",
+    "identity": "The One Who Grips",
+    "variant": "gacksung",
+    "path": "Faust/The One Who Grips/10204_gacksung_profile.png"
+  },
+  {
+    "id": 10204,
+    "sinner": "Faust",
+    "identity": "The One Who Grips",
+    "variant": "normal",
+    "path": "Faust/The One Who Grips/10204_normal_profile.png"
+  },
+  {
+    "id": 10202,
+    "sinner": "Faust",
+    "identity": "W Corp. L2 Cleanup Agent",
+    "variant": "gacksung",
+    "path": "Faust/W Corp. L2 Cleanup Agent/10202_gacksung_profile.png"
+  },
+  {
+    "id": 10202,
+    "sinner": "Faust",
+    "identity": "W Corp. L2 Cleanup Agent",
+    "variant": "normal",
+    "path": "Faust/W Corp. L2 Cleanup Agent/10202_normal_profile.png"
+  },
+  {
+    "id": 10209,
+    "sinner": "Faust",
+    "identity": "Wuthering Heights Butler",
+    "variant": "gacksung",
+    "path": "Faust/Wuthering Heights Butler/10209_gacksung_profile.png"
+  },
+  {
+    "id": 10209,
+    "sinner": "Faust",
+    "identity": "Wuthering Heights Butler",
+    "variant": "normal",
+    "path": "Faust/Wuthering Heights Butler/10209_normal_profile.png"
+  },
+  {
+    "id": 10205,
+    "sinner": "Faust",
+    "identity": "Zwei Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Faust/Zwei Assoc. South Section 4/10205_gacksung_profile.png"
+  },
+  {
+    "id": 10205,
+    "sinner": "Faust",
+    "identity": "Zwei Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Faust/Zwei Assoc. South Section 4/10205_normal_profile.png"
+  },
+  {
+    "id": 11216,
+    "sinner": "Gregor",
+    "identity": "Dawn Office Rep",
+    "variant": "gacksung",
+    "path": "Gregor/Dawn Office Rep/11216_gacksung_profile.png"
+  },
+  {
+    "id": 11216,
+    "sinner": "Gregor",
+    "identity": "Dawn Office Rep",
+    "variant": "normal",
+    "path": "Gregor/Dawn Office Rep/11216_normal_profile.png"
+  },
+  {
+    "id": 11209,
+    "sinner": "Gregor",
+    "identity": "Edgar Family Heir",
+    "variant": "gacksung",
+    "path": "Gregor/Edgar Family Heir/11209_gacksung_profile.png"
+  },
+  {
+    "id": 11209,
+    "sinner": "Gregor",
+    "identity": "Edgar Family Heir",
+    "variant": "normal",
+    "path": "Gregor/Edgar Family Heir/11209_normal_profile.png"
+  },
+  {
+    "id": 11211,
+    "sinner": "Gregor",
+    "identity": "Firefist Office Survivor",
+    "variant": "gacksung",
+    "path": "Gregor/Firefist Office Survivor/11211_gacksung_profile.png"
+  },
+  {
+    "id": 11211,
+    "sinner": "Gregor",
+    "identity": "Firefist Office Survivor",
+    "variant": "normal",
+    "path": "Gregor/Firefist Office Survivor/11211_normal_profile.png"
+  },
+  {
+    "id": 11203,
+    "sinner": "Gregor",
+    "identity": "G Corp. Corporal Manager",
+    "variant": "gacksung",
+    "path": "Gregor/G Corp. Corporal Manager/11203_gacksung_profile.png"
+  },
+  {
+    "id": 11203,
+    "sinner": "Gregor",
+    "identity": "G Corp. Corporal Manager",
+    "variant": "normal",
+    "path": "Gregor/G Corp. Corporal Manager/11203_normal_profile.png"
+  },
+  {
+    "id": 11212,
+    "sinner": "Gregor",
+    "identity": "Heishou Pack - Si Branch",
+    "variant": "gacksung",
+    "path": "Gregor/Heishou Pack - Si Branch/11212_gacksung_profile.png"
+  },
+  {
+    "id": 11212,
+    "sinner": "Gregor",
+    "identity": "Heishou Pack - Si Branch",
+    "variant": "normal",
+    "path": "Gregor/Heishou Pack - Si Branch/11212_normal_profile.png"
+  },
+  {
+    "id": 11208,
+    "sinner": "Gregor",
+    "identity": "Kurokumo Clan Captain",
+    "variant": "gacksung",
+    "path": "Gregor/Kurokumo Clan Captain/11208_gacksung_profile.png"
+  },
+  {
+    "id": 11208,
+    "sinner": "Gregor",
+    "identity": "Kurokumo Clan Captain",
+    "variant": "normal",
+    "path": "Gregor/Kurokumo Clan Captain/11208_normal_profile.png"
+  },
+  {
+    "id": 11201,
+    "sinner": "Gregor",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Gregor/LCB Sinner/11201_gacksung_profile.png"
+  },
+  {
+    "id": 11215,
+    "sinner": "Gregor",
+    "identity": "LCE E.G.O AEDD",
+    "variant": "gacksung",
+    "path": "Gregor/LCE E.G.O AEDD/11215_gacksung_profile.png"
+  },
+  {
+    "id": 11215,
+    "sinner": "Gregor",
+    "identity": "LCE E.G.O AEDD",
+    "variant": "normal",
+    "path": "Gregor/LCE E.G.O AEDD/11215_normal_profile.png"
+  },
+  {
+    "id": 11202,
+    "sinner": "Gregor",
+    "identity": "Liu Assoc. South Section 6",
+    "variant": "gacksung",
+    "path": "Gregor/Liu Assoc. South Section 6/11202_gacksung_profile.png"
+  },
+  {
+    "id": 11202,
+    "sinner": "Gregor",
+    "identity": "Liu Assoc. South Section 6",
+    "variant": "normal",
+    "path": "Gregor/Liu Assoc. South Section 6/11202_normal_profile.png"
+  },
+  {
+    "id": 11214,
+    "sinner": "Gregor",
+    "identity": "Lobotomy E.G.O Lamp",
+    "variant": "gacksung",
+    "path": "Gregor/Lobotomy E.G.O Lamp/11214_gacksung_profile.png"
+  },
+  {
+    "id": 11214,
+    "sinner": "Gregor",
+    "identity": "Lobotomy E.G.O Lamp",
+    "variant": "normal",
+    "path": "Gregor/Lobotomy E.G.O Lamp/11214_normal_profile.png"
+  },
+  {
+    "id": 11213,
+    "sinner": "Gregor",
+    "identity": "Night Awls Capitano",
+    "variant": "gacksung",
+    "path": "Gregor/Night Awls Capitano/11213_gacksung_profile.png"
+  },
+  {
+    "id": 11213,
+    "sinner": "Gregor",
+    "identity": "Night Awls Capitano",
+    "variant": "normal",
+    "path": "Gregor/Night Awls Capitano/11213_normal_profile.png"
+  },
+  {
+    "id": 11204,
+    "sinner": "Gregor",
+    "identity": "R.B. Sous-chef",
+    "variant": "gacksung",
+    "path": "Gregor/R.B. Sous-chef/11204_gacksung_profile.png"
+  },
+  {
+    "id": 11204,
+    "sinner": "Gregor",
+    "identity": "R.B. Sous-chef",
+    "variant": "normal",
+    "path": "Gregor/R.B. Sous-chef/11204_normal_profile.png"
+  },
+  {
+    "id": 11205,
+    "sinner": "Gregor",
+    "identity": "Rosespanner Workshop Fixer",
+    "variant": "gacksung",
+    "path": "Gregor/Rosespanner Workshop Fixer/11205_gacksung_profile.png"
+  },
+  {
+    "id": 11205,
+    "sinner": "Gregor",
+    "identity": "Rosespanner Workshop Fixer",
+    "variant": "normal",
+    "path": "Gregor/Rosespanner Workshop Fixer/11205_normal_profile.png"
+  },
+  {
+    "id": 11210,
+    "sinner": "Gregor",
+    "identity": "The Priest of La Manchaland",
+    "variant": "gacksung",
+    "path": "Gregor/The Priest of La Manchaland/11210_gacksung_profile.png"
+  },
+  {
+    "id": 11210,
+    "sinner": "Gregor",
+    "identity": "The Priest of La Manchaland",
+    "variant": "normal",
+    "path": "Gregor/The Priest of La Manchaland/11210_normal_profile.png"
+  },
+  {
+    "id": 11207,
+    "sinner": "Gregor",
+    "identity": "Twinhook Pirates First Mate",
+    "variant": "gacksung",
+    "path": "Gregor/Twinhook Pirates First Mate/11207_gacksung_profile.png"
+  },
+  {
+    "id": 11207,
+    "sinner": "Gregor",
+    "identity": "Twinhook Pirates First Mate",
+    "variant": "normal",
+    "path": "Gregor/Twinhook Pirates First Mate/11207_normal_profile.png"
+  },
+  {
+    "id": 11206,
+    "sinner": "Gregor",
+    "identity": "Zwei Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Gregor/Zwei Assoc. South Section 4/11206_gacksung_profile.png"
+  },
+  {
+    "id": 11206,
+    "sinner": "Gregor",
+    "identity": "Zwei Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Gregor/Zwei Assoc. South Section 4/11206_normal_profile.png"
+  },
+  {
+    "id": 10711,
+    "sinner": "Heathcliff",
+    "identity": "Full-Stop Office Fixer",
+    "variant": "gacksung",
+    "path": "Heathcliff/Full-Stop Office Fixer/10711_gacksung_profile.png"
+  },
+  {
+    "id": 10711,
+    "sinner": "Heathcliff",
+    "identity": "Full-Stop Office Fixer",
+    "variant": "normal",
+    "path": "Heathcliff/Full-Stop Office Fixer/10711_normal_profile.png"
+  },
+  {
+    "id": 10714,
+    "sinner": "Heathcliff",
+    "identity": "Heishou Pack - You Branch Adept",
+    "variant": "gacksung",
+    "path": "Heathcliff/Heishou Pack - You Branch Adept/10714_gacksung_profile.png"
+  },
+  {
+    "id": 10714,
+    "sinner": "Heathcliff",
+    "identity": "Heishou Pack - You Branch Adept",
+    "variant": "normal",
+    "path": "Heathcliff/Heishou Pack - You Branch Adept/10714_normal_profile.png"
+  },
+  {
+    "id": 10712,
+    "sinner": "Heathcliff",
+    "identity": "Kurokumo Clan Wakashu",
+    "variant": "gacksung",
+    "path": "Heathcliff/Kurokumo Clan Wakashu/10712_gacksung_profile.png"
+  },
+  {
+    "id": 10712,
+    "sinner": "Heathcliff",
+    "identity": "Kurokumo Clan Wakashu",
+    "variant": "normal",
+    "path": "Heathcliff/Kurokumo Clan Wakashu/10712_normal_profile.png"
+  },
+  {
+    "id": 10701,
+    "sinner": "Heathcliff",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Heathcliff/LCB Sinner/10701_gacksung_profile.png"
+  },
+  {
+    "id": 10705,
+    "sinner": "Heathcliff",
+    "identity": "Lobotomy E.G.O Sunshower",
+    "variant": "gacksung",
+    "path": "Heathcliff/Lobotomy E.G.O Sunshower/10705_gacksung_profile.png"
+  },
+  {
+    "id": 10705,
+    "sinner": "Heathcliff",
+    "identity": "Lobotomy E.G.O Sunshower",
+    "variant": "normal",
+    "path": "Heathcliff/Lobotomy E.G.O Sunshower/10705_normal_profile.png"
+  },
+  {
+    "id": 10709,
+    "sinner": "Heathcliff",
+    "identity": "MultiCrack Office Fixer",
+    "variant": "gacksung",
+    "path": "Heathcliff/MultiCrack Office Fixer/10709_gacksung_profile.png"
+  },
+  {
+    "id": 10709,
+    "sinner": "Heathcliff",
+    "identity": "MultiCrack Office Fixer",
+    "variant": "normal",
+    "path": "Heathcliff/MultiCrack Office Fixer/10709_normal_profile.png"
+  },
+  {
+    "id": 10704,
+    "sinner": "Heathcliff",
+    "identity": "N Corp. Kleinhammer",
+    "variant": "gacksung",
+    "path": "Heathcliff/N Corp. Kleinhammer/10704_gacksung_profile.png"
+  },
+  {
+    "id": 10704,
+    "sinner": "Heathcliff",
+    "identity": "N Corp. Kleinhammer",
+    "variant": "normal",
+    "path": "Heathcliff/N Corp. Kleinhammer/10704_normal_profile.png"
+  },
+  {
+    "id": 10708,
+    "sinner": "Heathcliff",
+    "identity": "Oufi Assoc. South Section 3",
+    "variant": "gacksung",
+    "path": "Heathcliff/Oufi Assoc. South Section 3/10708_gacksung_profile.png"
+  },
+  {
+    "id": 10708,
+    "sinner": "Heathcliff",
+    "identity": "Oufi Assoc. South Section 3",
+    "variant": "normal",
+    "path": "Heathcliff/Oufi Assoc. South Section 3/10708_normal_profile.png"
+  },
+  {
+    "id": 10703,
+    "sinner": "Heathcliff",
+    "identity": "R Corp. 4th Pack Rabbit",
+    "variant": "gacksung",
+    "path": "Heathcliff/R Corp. 4th Pack Rabbit/10703_gacksung_profile.png"
+  },
+  {
+    "id": 10703,
+    "sinner": "Heathcliff",
+    "identity": "R Corp. 4th Pack Rabbit",
+    "variant": "normal",
+    "path": "Heathcliff/R Corp. 4th Pack Rabbit/10703_normal_profile.png"
+  },
+  {
+    "id": 10706,
+    "sinner": "Heathcliff",
+    "identity": "Seven Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Heathcliff/Seven Assoc. South Section 4/10706_gacksung_profile.png"
+  },
+  {
+    "id": 10706,
+    "sinner": "Heathcliff",
+    "identity": "Seven Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Heathcliff/Seven Assoc. South Section 4/10706_normal_profile.png"
+  },
+  {
+    "id": 10702,
+    "sinner": "Heathcliff",
+    "identity": "Shi Assoc. South Section 5",
+    "variant": "gacksung",
+    "path": "Heathcliff/Shi Assoc. South Section 5/10702_gacksung_profile.png"
+  },
+  {
+    "id": 10702,
+    "sinner": "Heathcliff",
+    "identity": "Shi Assoc. South Section 5",
+    "variant": "normal",
+    "path": "Heathcliff/Shi Assoc. South Section 5/10702_normal_profile.png"
+  },
+  {
+    "id": 10716,
+    "sinner": "Heathcliff",
+    "identity": "The House of Spiders The Thumb Apprentice",
+    "variant": "gacksung",
+    "path": "Heathcliff/The House of Spiders The Thumb Apprentice/10716_gacksung_profile.png"
+  },
+  {
+    "id": 10716,
+    "sinner": "Heathcliff",
+    "identity": "The House of Spiders The Thumb Apprentice",
+    "variant": "normal",
+    "path": "Heathcliff/The House of Spiders The Thumb Apprentice/10716_normal_profile.png"
+  },
+  {
+    "id": 10715,
+    "sinner": "Heathcliff",
+    "identity": "The Middle Big Brother",
+    "variant": "gacksung",
+    "path": "Heathcliff/The Middle Big Brother/10715_gacksung_profile.png"
+  },
+  {
+    "id": 10715,
+    "sinner": "Heathcliff",
+    "identity": "The Middle Big Brother",
+    "variant": "normal",
+    "path": "Heathcliff/The Middle Big Brother/10715_normal_profile.png"
+  },
+  {
+    "id": 10707,
+    "sinner": "Heathcliff",
+    "identity": "The Pequod Harpooneer",
+    "variant": "gacksung",
+    "path": "Heathcliff/The Pequod Harpooneer/10707_gacksung_profile.png"
+  },
+  {
+    "id": 10707,
+    "sinner": "Heathcliff",
+    "identity": "The Pequod Harpooneer",
+    "variant": "normal",
+    "path": "Heathcliff/The Pequod Harpooneer/10707_normal_profile.png"
+  },
+  {
+    "id": 10713,
+    "sinner": "Heathcliff",
+    "identity": "W Corp. L4 Cleanup Agent - CCA",
+    "variant": "gacksung",
+    "path": "Heathcliff/W Corp. L4 Cleanup Agent - CCA/10713_gacksung_profile.png"
+  },
+  {
+    "id": 10713,
+    "sinner": "Heathcliff",
+    "identity": "W Corp. L4 Cleanup Agent - CCA",
+    "variant": "normal",
+    "path": "Heathcliff/W Corp. L4 Cleanup Agent - CCA/10713_normal_profile.png"
+  },
+  {
+    "id": 10710,
+    "sinner": "Heathcliff",
+    "identity": "Wild Hunt",
+    "variant": "gacksung",
+    "path": "Heathcliff/Wild Hunt/10710_gacksung_profile.png"
+  },
+  {
+    "id": 10710,
+    "sinner": "Heathcliff",
+    "identity": "Wild Hunt",
+    "variant": "normal",
+    "path": "Heathcliff/Wild Hunt/10710_normal_profile.png"
+  },
+  {
+    "id": 10616,
+    "sinner": "Hong Lu",
+    "identity": "Cinq Assoc. East Section 3",
+    "variant": "gacksung",
+    "path": "Hong Lu/Cinq Assoc. East Section 3/10616_gacksung_profile.png"
+  },
+  {
+    "id": 10616,
+    "sinner": "Hong Lu",
+    "identity": "Cinq Assoc. East Section 3",
+    "variant": "normal",
+    "path": "Hong Lu/Cinq Assoc. East Section 3/10616_normal_profile.png"
+  },
+  {
+    "id": 10608,
+    "sinner": "Hong Lu",
+    "identity": "Dieci Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Hong Lu/Dieci Assoc. South Section 4/10608_gacksung_profile.png"
+  },
+  {
+    "id": 10608,
+    "sinner": "Hong Lu",
+    "identity": "Dieci Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Hong Lu/Dieci Assoc. South Section 4/10608_normal_profile.png"
+  },
+  {
+    "id": 10609,
+    "sinner": "Hong Lu",
+    "identity": "District 20 Yurodivy",
+    "variant": "gacksung",
+    "path": "Hong Lu/District 20 Yurodivy/10609_gacksung_profile.png"
+  },
+  {
+    "id": 10609,
+    "sinner": "Hong Lu",
+    "identity": "District 20 Yurodivy",
+    "variant": "normal",
+    "path": "Hong Lu/District 20 Yurodivy/10609_normal_profile.png"
+  },
+  {
+    "id": 10610,
+    "sinner": "Hong Lu",
+    "identity": "Fanghunt Office Fixer",
+    "variant": "gacksung",
+    "path": "Hong Lu/Fanghunt Office Fixer/10610_gacksung_profile.png"
+  },
+  {
+    "id": 10610,
+    "sinner": "Hong Lu",
+    "identity": "Fanghunt Office Fixer",
+    "variant": "normal",
+    "path": "Hong Lu/Fanghunt Office Fixer/10610_normal_profile.png"
+  },
+  {
+    "id": 10611,
+    "sinner": "Hong Lu",
+    "identity": "Full-Stop Office Rep",
+    "variant": "gacksung",
+    "path": "Hong Lu/Full-Stop Office Rep/10611_gacksung_profile.png"
+  },
+  {
+    "id": 10611,
+    "sinner": "Hong Lu",
+    "identity": "Full-Stop Office Rep",
+    "variant": "normal",
+    "path": "Hong Lu/Full-Stop Office Rep/10611_normal_profile.png"
+  },
+  {
+    "id": 10607,
+    "sinner": "Hong Lu",
+    "identity": "Hook Office Fixer",
+    "variant": "gacksung",
+    "path": "Hong Lu/Hook Office Fixer/10607_gacksung_profile.png"
+  },
+  {
+    "id": 10607,
+    "sinner": "Hong Lu",
+    "identity": "Hook Office Fixer",
+    "variant": "normal",
+    "path": "Hong Lu/Hook Office Fixer/10607_normal_profile.png"
+  },
+  {
+    "id": 10605,
+    "sinner": "Hong Lu",
+    "identity": "K Corp. Class 3 Excision Staff",
+    "variant": "gacksung",
+    "path": "Hong Lu/K Corp. Class 3 Excision Staff/10605_gacksung_profile.png"
+  },
+  {
+    "id": 10605,
+    "sinner": "Hong Lu",
+    "identity": "K Corp. Class 3 Excision Staff",
+    "variant": "normal",
+    "path": "Hong Lu/K Corp. Class 3 Excision Staff/10605_normal_profile.png"
+  },
+  {
+    "id": 10602,
+    "sinner": "Hong Lu",
+    "identity": "Kurokumo Clan Wakashu",
+    "variant": "gacksung",
+    "path": "Hong Lu/Kurokumo Clan Wakashu/10602_gacksung_profile.png"
+  },
+  {
+    "id": 10602,
+    "sinner": "Hong Lu",
+    "identity": "Kurokumo Clan Wakashu",
+    "variant": "normal",
+    "path": "Hong Lu/Kurokumo Clan Wakashu/10602_normal_profile.png"
+  },
+  {
+    "id": 10601,
+    "sinner": "Hong Lu",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Hong Lu/LCB Sinner/10601_gacksung_profile.png"
+  },
+  {
+    "id": 10604,
+    "sinner": "Hong Lu",
+    "identity": "Liu Assoc. South Section 5",
+    "variant": "gacksung",
+    "path": "Hong Lu/Liu Assoc. South Section 5/10604_gacksung_profile.png"
+  },
+  {
+    "id": 10604,
+    "sinner": "Hong Lu",
+    "identity": "Liu Assoc. South Section 5",
+    "variant": "normal",
+    "path": "Hong Lu/Liu Assoc. South Section 5/10604_normal_profile.png"
+  },
+  {
+    "id": 10612,
+    "sinner": "Hong Lu",
+    "identity": "R Corp. 4th Pack Reindeer",
+    "variant": "gacksung",
+    "path": "Hong Lu/R Corp. 4th Pack Reindeer/10612_gacksung_profile.png"
+  },
+  {
+    "id": 10612,
+    "sinner": "Hong Lu",
+    "identity": "R Corp. 4th Pack Reindeer",
+    "variant": "normal",
+    "path": "Hong Lu/R Corp. 4th Pack Reindeer/10612_normal_profile.png"
+  },
+  {
+    "id": 10615,
+    "sinner": "Hong Lu",
+    "identity": "S Corp. Ch’unokkun",
+    "variant": "gacksung",
+    "path": "Hong Lu/S Corp. Ch’unokkun/10615_gacksung_profile.png"
+  },
+  {
+    "id": 10615,
+    "sinner": "Hong Lu",
+    "identity": "S Corp. Ch’unokkun",
+    "variant": "normal",
+    "path": "Hong Lu/S Corp. Ch’unokkun/10615_normal_profile.png"
+  },
+  {
+    "id": 10614,
+    "sinner": "Hong Lu",
+    "identity": "The House of Spiders The Ring Nursefather",
+    "variant": "gacksung",
+    "path": "Hong Lu/The House of Spiders The Ring Nursefather/10614_gacksung_profile.png"
+  },
+  {
+    "id": 10614,
+    "sinner": "Hong Lu",
+    "identity": "The House of Spiders The Ring Nursefather",
+    "variant": "normal",
+    "path": "Hong Lu/The House of Spiders The Ring Nursefather/10614_normal_profile.png"
+  },
+  {
+    "id": 10613,
+    "sinner": "Hong Lu",
+    "identity": "The Lord of Hongyuan",
+    "variant": "gacksung",
+    "path": "Hong Lu/The Lord of Hongyuan/10613_gacksung_profile.png"
+  },
+  {
+    "id": 10613,
+    "sinner": "Hong Lu",
+    "identity": "The Lord of Hongyuan",
+    "variant": "normal",
+    "path": "Hong Lu/The Lord of Hongyuan/10613_normal_profile.png"
+  },
+  {
+    "id": 10603,
+    "sinner": "Hong Lu",
+    "identity": "Tingtang Gang Gangleader",
+    "variant": "gacksung",
+    "path": "Hong Lu/Tingtang Gang Gangleader/10603_gacksung_profile.png"
+  },
+  {
+    "id": 10603,
+    "sinner": "Hong Lu",
+    "identity": "Tingtang Gang Gangleader",
+    "variant": "normal",
+    "path": "Hong Lu/Tingtang Gang Gangleader/10603_normal_profile.png"
+  },
+  {
+    "id": 10606,
+    "sinner": "Hong Lu",
+    "identity": "W Corp. L2 Cleanup Agent",
+    "variant": "gacksung",
+    "path": "Hong Lu/W Corp. L2 Cleanup Agent/10606_gacksung_profile.png"
+  },
+  {
+    "id": 10606,
+    "sinner": "Hong Lu",
+    "identity": "W Corp. L2 Cleanup Agent",
+    "variant": "normal",
+    "path": "Hong Lu/W Corp. L2 Cleanup Agent/10606_normal_profile.png"
+  },
+  {
+    "id": 10809,
+    "sinner": "Ishmael",
+    "identity": "Edgar Family Butler",
+    "variant": "gacksung",
+    "path": "Ishmael/Edgar Family Butler/10809_gacksung_profile.png"
+  },
+  {
+    "id": 10809,
+    "sinner": "Ishmael",
+    "identity": "Edgar Family Butler",
+    "variant": "normal",
+    "path": "Ishmael/Edgar Family Butler/10809_normal_profile.png"
+  },
+  {
+    "id": 10812,
+    "sinner": "Ishmael",
+    "identity": "Family Hierarch Candidate",
+    "variant": "gacksung",
+    "path": "Ishmael/Family Hierarch Candidate/10812_gacksung_profile.png"
+  },
+  {
+    "id": 10812,
+    "sinner": "Ishmael",
+    "identity": "Family Hierarch Candidate",
+    "variant": "normal",
+    "path": "Ishmael/Family Hierarch Candidate/10812_normal_profile.png"
+  },
+  {
+    "id": 10813,
+    "sinner": "Ishmael",
+    "identity": "Jeong_s Office Rep",
+    "variant": "gacksung",
+    "path": "Ishmael/Jeong_s Office Rep/10813_gacksung_profile.png"
+  },
+  {
+    "id": 10813,
+    "sinner": "Ishmael",
+    "identity": "Jeong_s Office Rep",
+    "variant": "normal",
+    "path": "Ishmael/Jeong_s Office Rep/10813_normal_profile.png"
+  },
+  {
+    "id": 10811,
+    "sinner": "Ishmael",
+    "identity": "Kurokumo Clan Captain",
+    "variant": "gacksung",
+    "path": "Ishmael/Kurokumo Clan Captain/10811_gacksung_profile.png"
+  },
+  {
+    "id": 10811,
+    "sinner": "Ishmael",
+    "identity": "Kurokumo Clan Captain",
+    "variant": "normal",
+    "path": "Ishmael/Kurokumo Clan Captain/10811_normal_profile.png"
+  },
+  {
+    "id": 10801,
+    "sinner": "Ishmael",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Ishmael/LCB Sinner/10801_gacksung_profile.png"
+  },
+  {
+    "id": 10804,
+    "sinner": "Ishmael",
+    "identity": "LCCB Assistant Manager",
+    "variant": "gacksung",
+    "path": "Ishmael/LCCB Assistant Manager/10804_gacksung_profile.png"
+  },
+  {
+    "id": 10804,
+    "sinner": "Ishmael",
+    "identity": "LCCB Assistant Manager",
+    "variant": "normal",
+    "path": "Ishmael/LCCB Assistant Manager/10804_normal_profile.png"
+  },
+  {
+    "id": 10815,
+    "sinner": "Ishmael",
+    "identity": "LCD OSIR Team",
+    "variant": "gacksung",
+    "path": "Ishmael/LCD OSIR Team/10815_gacksung_profile.png"
+  },
+  {
+    "id": 10815,
+    "sinner": "Ishmael",
+    "identity": "LCD OSIR Team",
+    "variant": "normal",
+    "path": "Ishmael/LCD OSIR Team/10815_normal_profile.png"
+  },
+  {
+    "id": 10806,
+    "sinner": "Ishmael",
+    "identity": "Liu Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Ishmael/Liu Assoc. South Section 4/10806_gacksung_profile.png"
+  },
+  {
+    "id": 10806,
+    "sinner": "Ishmael",
+    "identity": "Liu Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Ishmael/Liu Assoc. South Section 4/10806_normal_profile.png"
+  },
+  {
+    "id": 10805,
+    "sinner": "Ishmael",
+    "identity": "Lobotomy E.G.O Sloshing",
+    "variant": "gacksung",
+    "path": "Ishmael/Lobotomy E.G.O Sloshing/10805_gacksung_profile.png"
+  },
+  {
+    "id": 10805,
+    "sinner": "Ishmael",
+    "identity": "Lobotomy E.G.O Sloshing",
+    "variant": "normal",
+    "path": "Ishmael/Lobotomy E.G.O Sloshing/10805_normal_profile.png"
+  },
+  {
+    "id": 10807,
+    "sinner": "Ishmael",
+    "identity": "Molar Boatworks Fixer",
+    "variant": "gacksung",
+    "path": "Ishmael/Molar Boatworks Fixer/10807_gacksung_profile.png"
+  },
+  {
+    "id": 10807,
+    "sinner": "Ishmael",
+    "identity": "Molar Boatworks Fixer",
+    "variant": "normal",
+    "path": "Ishmael/Molar Boatworks Fixer/10807_normal_profile.png"
+  },
+  {
+    "id": 10802,
+    "sinner": "Ishmael",
+    "identity": "R Corp. 4th Pack Reindeer",
+    "variant": "gacksung",
+    "path": "Ishmael/R Corp. 4th Pack Reindeer/10802_gacksung_profile.png"
+  },
+  {
+    "id": 10802,
+    "sinner": "Ishmael",
+    "identity": "R Corp. 4th Pack Reindeer",
+    "variant": "normal",
+    "path": "Ishmael/R Corp. 4th Pack Reindeer/10802_normal_profile.png"
+  },
+  {
+    "id": 10803,
+    "sinner": "Ishmael",
+    "identity": "Shi Assoc. South Section 5",
+    "variant": "gacksung",
+    "path": "Ishmael/Shi Assoc. South Section 5/10803_gacksung_profile.png"
+  },
+  {
+    "id": 10803,
+    "sinner": "Ishmael",
+    "identity": "Shi Assoc. South Section 5",
+    "variant": "normal",
+    "path": "Ishmael/Shi Assoc. South Section 5/10803_normal_profile.png"
+  },
+  {
+    "id": 10814,
+    "sinner": "Ishmael",
+    "identity": "The House of Spiders The Middle Apprentice",
+    "variant": "gacksung",
+    "path": "Ishmael/The House of Spiders The Middle Apprentice/10814_gacksung_profile.png"
+  },
+  {
+    "id": 10814,
+    "sinner": "Ishmael",
+    "identity": "The House of Spiders The Middle Apprentice",
+    "variant": "normal",
+    "path": "Ishmael/The House of Spiders The Middle Apprentice/10814_normal_profile.png"
+  },
+  {
+    "id": 10808,
+    "sinner": "Ishmael",
+    "identity": "The Pequod Captain",
+    "variant": "gacksung",
+    "path": "Ishmael/The Pequod Captain/10808_gacksung_profile.png"
+  },
+  {
+    "id": 10808,
+    "sinner": "Ishmael",
+    "identity": "The Pequod Captain",
+    "variant": "normal",
+    "path": "Ishmael/The Pequod Captain/10808_normal_profile.png"
+  },
+  {
+    "id": 10810,
+    "sinner": "Ishmael",
+    "identity": "Zwei Assoc. West Section 3",
+    "variant": "gacksung",
+    "path": "Ishmael/Zwei Assoc. West Section 3/10810_gacksung_profile.png"
+  },
+  {
+    "id": 10810,
+    "sinner": "Ishmael",
+    "identity": "Zwei Assoc. West Section 3",
+    "variant": "normal",
+    "path": "Ishmael/Zwei Assoc. West Section 3/10810_normal_profile.png"
+  },
+  {
+    "id": 40501,
+    "sinner": "Meursault",
+    "identity": "A Moonlit Farewell to Home",
+    "variant": "gacksung",
+    "path": "Meursault/A Moonlit Farewell to Home/40501_gacksung_profile.png"
+  },
+  {
+    "id": 10508,
+    "sinner": "Meursault",
+    "identity": "Blade Lineage Mentor",
+    "variant": "gacksung",
+    "path": "Meursault/Blade Lineage Mentor/10508_gacksung_profile.png"
+  },
+  {
+    "id": 10508,
+    "sinner": "Meursault",
+    "identity": "Blade Lineage Mentor",
+    "variant": "normal",
+    "path": "Meursault/Blade Lineage Mentor/10508_normal_profile.png"
+  },
+  {
+    "id": 10511,
+    "sinner": "Meursault",
+    "identity": "Cinq Assoc. West Section 3",
+    "variant": "gacksung",
+    "path": "Meursault/Cinq Assoc. West Section 3/10511_gacksung_profile.png"
+  },
+  {
+    "id": 10511,
+    "sinner": "Meursault",
+    "identity": "Cinq Assoc. West Section 3",
+    "variant": "normal",
+    "path": "Meursault/Cinq Assoc. West Section 3/10511_normal_profile.png"
+  },
+  {
+    "id": 10509,
+    "sinner": "Meursault",
+    "identity": "Dead Rabbits Boss",
+    "variant": "gacksung",
+    "path": "Meursault/Dead Rabbits Boss/10509_gacksung_profile.png"
+  },
+  {
+    "id": 10509,
+    "sinner": "Meursault",
+    "identity": "Dead Rabbits Boss",
+    "variant": "normal",
+    "path": "Meursault/Dead Rabbits Boss/10509_normal_profile.png"
+  },
+  {
+    "id": 10510,
+    "sinner": "Meursault",
+    "identity": "Dieci Assoc. South Section 4 Director",
+    "variant": "gacksung",
+    "path": "Meursault/Dieci Assoc. South Section 4 Director/10510_gacksung_profile.png"
+  },
+  {
+    "id": 10510,
+    "sinner": "Meursault",
+    "identity": "Dieci Assoc. South Section 4 Director",
+    "variant": "normal",
+    "path": "Meursault/Dieci Assoc. South Section 4 Director/10510_normal_profile.png"
+  },
+  {
+    "id": 10501,
+    "sinner": "Meursault",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Meursault/LCB Sinner/10501_gacksung_profile.png"
+  },
+  {
+    "id": 10502,
+    "sinner": "Meursault",
+    "identity": "Liu Assoc. South Section 6",
+    "variant": "gacksung",
+    "path": "Meursault/Liu Assoc. South Section 6/10502_gacksung_profile.png"
+  },
+  {
+    "id": 10502,
+    "sinner": "Meursault",
+    "identity": "Liu Assoc. South Section 6",
+    "variant": "normal",
+    "path": "Meursault/Liu Assoc. South Section 6/10502_normal_profile.png"
+  },
+  {
+    "id": 10514,
+    "sinner": "Meursault",
+    "identity": "Lobotomy E.G.O Hornet 【Alteration】",
+    "variant": "gacksung",
+    "path": "Meursault/Lobotomy E.G.O Hornet 【Alteration】/10514_gacksung_profile.png"
+  },
+  {
+    "id": 10514,
+    "sinner": "Meursault",
+    "identity": "Lobotomy E.G.O Hornet 【Alteration】",
+    "variant": "normal",
+    "path": "Meursault/Lobotomy E.G.O Hornet 【Alteration】/10514_normal_profile.png"
+  },
+  {
+    "id": 10504,
+    "sinner": "Meursault",
+    "identity": "N Corp. Großhammer",
+    "variant": "gacksung",
+    "path": "Meursault/N Corp. Großhammer/10504_gacksung_profile.png"
+  },
+  {
+    "id": 10504,
+    "sinner": "Meursault",
+    "identity": "N Corp. Großhammer",
+    "variant": "normal",
+    "path": "Meursault/N Corp. Großhammer/10504_normal_profile.png"
+  },
+  {
+    "id": 10506,
+    "sinner": "Meursault",
+    "identity": "R Corp. 4th Pack Rhino",
+    "variant": "gacksung",
+    "path": "Meursault/R Corp. 4th Pack Rhino/10506_gacksung_profile.png"
+  },
+  {
+    "id": 10506,
+    "sinner": "Meursault",
+    "identity": "R Corp. 4th Pack Rhino",
+    "variant": "normal",
+    "path": "Meursault/R Corp. 4th Pack Rhino/10506_normal_profile.png"
+  },
+  {
+    "id": 10505,
+    "sinner": "Meursault",
+    "identity": "Rosespanner Workshop Fixer",
+    "variant": "gacksung",
+    "path": "Meursault/Rosespanner Workshop Fixer/10505_gacksung_profile.png"
+  },
+  {
+    "id": 10505,
+    "sinner": "Meursault",
+    "identity": "Rosespanner Workshop Fixer",
+    "variant": "normal",
+    "path": "Meursault/Rosespanner Workshop Fixer/10505_normal_profile.png"
+  },
+  {
+    "id": 10507,
+    "sinner": "Meursault",
+    "identity": "The Middle Little Brother",
+    "variant": "gacksung",
+    "path": "Meursault/The Middle Little Brother/10507_gacksung_profile.png"
+  },
+  {
+    "id": 10507,
+    "sinner": "Meursault",
+    "identity": "The Middle Little Brother",
+    "variant": "normal",
+    "path": "Meursault/The Middle Little Brother/10507_normal_profile.png"
+  },
+  {
+    "id": 10513,
+    "sinner": "Meursault",
+    "identity": "The Prince of La Manchaland",
+    "variant": "gacksung",
+    "path": "Meursault/The Prince of La Manchaland/10513_gacksung_profile.png"
+  },
+  {
+    "id": 10513,
+    "sinner": "Meursault",
+    "identity": "The Prince of La Manchaland",
+    "variant": "normal",
+    "path": "Meursault/The Prince of La Manchaland/10513_normal_profile.png"
+  },
+  {
+    "id": 10515,
+    "sinner": "Meursault",
+    "identity": "The Ring Fauvist Student",
+    "variant": "gacksung",
+    "path": "Meursault/The Ring Fauvist Student/10515_gacksung_profile.png"
+  },
+  {
+    "id": 10515,
+    "sinner": "Meursault",
+    "identity": "The Ring Fauvist Student",
+    "variant": "normal",
+    "path": "Meursault/The Ring Fauvist Student/10515_normal_profile.png"
+  },
+  {
+    "id": 10512,
+    "sinner": "Meursault",
+    "identity": "The Thumb East Capo IIII",
+    "variant": "gacksung",
+    "path": "Meursault/The Thumb East Capo IIII/10512_gacksung_profile.png"
+  },
+  {
+    "id": 10512,
+    "sinner": "Meursault",
+    "identity": "The Thumb East Capo IIII",
+    "variant": "normal",
+    "path": "Meursault/The Thumb East Capo IIII/10512_normal_profile.png"
+  },
+  {
+    "id": 10503,
+    "sinner": "Meursault",
+    "identity": "W Corp. Cleanup Crew",
+    "variant": "gacksung",
+    "path": "Meursault/W Corp. Cleanup Crew/10503_gacksung_profile.png"
+  },
+  {
+    "id": 10503,
+    "sinner": "Meursault",
+    "identity": "W Corp. Cleanup Crew",
+    "variant": "normal",
+    "path": "Meursault/W Corp. Cleanup Crew/10503_normal_profile.png"
+  },
+  {
+    "id": 11102,
+    "sinner": "Outis",
+    "identity": "Blade Lineage Salsu",
+    "variant": "gacksung",
+    "path": "Outis/Blade Lineage Salsu/11102_gacksung_profile.png"
+  },
+  {
+    "id": 11102,
+    "sinner": "Outis",
+    "identity": "Blade Lineage Salsu",
+    "variant": "normal",
+    "path": "Outis/Blade Lineage Salsu/11102_normal_profile.png"
+  },
+  {
+    "id": 11106,
+    "sinner": "Outis",
+    "identity": "Cinq Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Outis/Cinq Assoc. South Section 4/11106_gacksung_profile.png"
+  },
+  {
+    "id": 11106,
+    "sinner": "Outis",
+    "identity": "Cinq Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Outis/Cinq Assoc. South Section 4/11106_normal_profile.png"
+  },
+  {
+    "id": 11103,
+    "sinner": "Outis",
+    "identity": "G Corp. Head Manager",
+    "variant": "gacksung",
+    "path": "Outis/G Corp. Head Manager/11103_gacksung_profile.png"
+  },
+  {
+    "id": 11103,
+    "sinner": "Outis",
+    "identity": "G Corp. Head Manager",
+    "variant": "normal",
+    "path": "Outis/G Corp. Head Manager/11103_normal_profile.png"
+  },
+  {
+    "id": 11112,
+    "sinner": "Outis",
+    "identity": "Heishou Pack - Mao Branch",
+    "variant": "gacksung",
+    "path": "Outis/Heishou Pack - Mao Branch/11112_gacksung_profile.png"
+  },
+  {
+    "id": 11112,
+    "sinner": "Outis",
+    "identity": "Heishou Pack - Mao Branch",
+    "variant": "normal",
+    "path": "Outis/Heishou Pack - Mao Branch/11112_normal_profile.png"
+  },
+  {
+    "id": 11114,
+    "sinner": "Outis",
+    "identity": "LCA Udjat Vanguard Team 3 Leader",
+    "variant": "gacksung",
+    "path": "Outis/LCA Udjat Vanguard Team 3 Leader/11114_gacksung_profile.png"
+  },
+  {
+    "id": 11114,
+    "sinner": "Outis",
+    "identity": "LCA Udjat Vanguard Team 3 Leader",
+    "variant": "normal",
+    "path": "Outis/LCA Udjat Vanguard Team 3 Leader/11114_normal_profile.png"
+  },
+  {
+    "id": 11101,
+    "sinner": "Outis",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Outis/LCB Sinner/11101_gacksung_profile.png"
+  },
+  {
+    "id": 11107,
+    "sinner": "Outis",
+    "identity": "Lobotomy E.G.O Magic Bullet",
+    "variant": "gacksung",
+    "path": "Outis/Lobotomy E.G.O Magic Bullet/11107_gacksung_profile.png"
+  },
+  {
+    "id": 11107,
+    "sinner": "Outis",
+    "identity": "Lobotomy E.G.O Magic Bullet",
+    "variant": "normal",
+    "path": "Outis/Lobotomy E.G.O Magic Bullet/11107_normal_profile.png"
+  },
+  {
+    "id": 11105,
+    "sinner": "Outis",
+    "identity": "Molar Office Fixer",
+    "variant": "gacksung",
+    "path": "Outis/Molar Office Fixer/11105_gacksung_profile.png"
+  },
+  {
+    "id": 11105,
+    "sinner": "Outis",
+    "identity": "Molar Office Fixer",
+    "variant": "normal",
+    "path": "Outis/Molar Office Fixer/11105_normal_profile.png"
+  },
+  {
+    "id": 11104,
+    "sinner": "Outis",
+    "identity": "Seven Assoc. South Section 6 Director",
+    "variant": "gacksung",
+    "path": "Outis/Seven Assoc. South Section 6 Director/11104_gacksung_profile.png"
+  },
+  {
+    "id": 11104,
+    "sinner": "Outis",
+    "identity": "Seven Assoc. South Section 6 Director",
+    "variant": "normal",
+    "path": "Outis/Seven Assoc. South Section 6 Director/11104_normal_profile.png"
+  },
+  {
+    "id": 11113,
+    "sinner": "Outis",
+    "identity": "T Corp. Class 3 VDCU Staff",
+    "variant": "gacksung",
+    "path": "Outis/T Corp. Class 3 VDCU Staff/11113_gacksung_profile.png"
+  },
+  {
+    "id": 11113,
+    "sinner": "Outis",
+    "identity": "T Corp. Class 3 VDCU Staff",
+    "variant": "normal",
+    "path": "Outis/T Corp. Class 3 VDCU Staff/11113_normal_profile.png"
+  },
+  {
+    "id": 11111,
+    "sinner": "Outis",
+    "identity": "The Barber of La Manchaland",
+    "variant": "gacksung",
+    "path": "Outis/The Barber of La Manchaland/11111_gacksung_profile.png"
+  },
+  {
+    "id": 11111,
+    "sinner": "Outis",
+    "identity": "The Barber of La Manchaland",
+    "variant": "normal",
+    "path": "Outis/The Barber of La Manchaland/11111_normal_profile.png"
+  },
+  {
+    "id": 11115,
+    "sinner": "Outis",
+    "identity": "The House of Spiders The Middle Nursefather",
+    "variant": "gacksung",
+    "path": "Outis/The House of Spiders The Middle Nursefather/11115_gacksung_profile.png"
+  },
+  {
+    "id": 11115,
+    "sinner": "Outis",
+    "identity": "The House of Spiders The Middle Nursefather",
+    "variant": "normal",
+    "path": "Outis/The House of Spiders The Middle Nursefather/11115_normal_profile.png"
+  },
+  {
+    "id": 11109,
+    "sinner": "Outis",
+    "identity": "The Ring Pointillist Student",
+    "variant": "gacksung",
+    "path": "Outis/The Ring Pointillist Student/11109_gacksung_profile.png"
+  },
+  {
+    "id": 11109,
+    "sinner": "Outis",
+    "identity": "The Ring Pointillist Student",
+    "variant": "normal",
+    "path": "Outis/The Ring Pointillist Student/11109_normal_profile.png"
+  },
+  {
+    "id": 11110,
+    "sinner": "Outis",
+    "identity": "W Corp. L3 Cleanup Captain",
+    "variant": "gacksung",
+    "path": "Outis/W Corp. L3 Cleanup Captain/11110_gacksung_profile.png"
+  },
+  {
+    "id": 11110,
+    "sinner": "Outis",
+    "identity": "W Corp. L3 Cleanup Captain",
+    "variant": "normal",
+    "path": "Outis/W Corp. L3 Cleanup Captain/11110_normal_profile.png"
+  },
+  {
+    "id": 11108,
+    "sinner": "Outis",
+    "identity": "Wuthering Heights Chief Butler",
+    "variant": "gacksung",
+    "path": "Outis/Wuthering Heights Chief Butler/11108_gacksung_profile.png"
+  },
+  {
+    "id": 11108,
+    "sinner": "Outis",
+    "identity": "Wuthering Heights Chief Butler",
+    "variant": "normal",
+    "path": "Outis/Wuthering Heights Chief Butler/11108_normal_profile.png"
+  },
+  {
+    "id": 10910,
+    "sinner": "Rodion",
+    "identity": "Devyat_ Assoc. North Section 3",
+    "variant": "gacksung",
+    "path": "Rodion/Devyat_ Assoc. North Section 3/10910_gacksung_profile.png"
+  },
+  {
+    "id": 10910,
+    "sinner": "Rodion",
+    "identity": "Devyat_ Assoc. North Section 3",
+    "variant": "normal",
+    "path": "Rodion/Devyat_ Assoc. North Section 3/10910_normal_profile.png"
+  },
+  {
+    "id": 10907,
+    "sinner": "Rodion",
+    "identity": "Dieci Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Rodion/Dieci Assoc. South Section 4/10907_gacksung_profile.png"
+  },
+  {
+    "id": 10907,
+    "sinner": "Rodion",
+    "identity": "Dieci Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Rodion/Dieci Assoc. South Section 4/10907_normal_profile.png"
+  },
+  {
+    "id": 10912,
+    "sinner": "Rodion",
+    "identity": "Heishou Pack - Si Branch",
+    "variant": "gacksung",
+    "path": "Rodion/Heishou Pack - Si Branch/10912_gacksung_profile.png"
+  },
+  {
+    "id": 10912,
+    "sinner": "Rodion",
+    "identity": "Heishou Pack - Si Branch",
+    "variant": "normal",
+    "path": "Rodion/Heishou Pack - Si Branch/10912_normal_profile.png"
+  },
+  {
+    "id": 10902,
+    "sinner": "Rodion",
+    "identity": "Kurokumo Henchwoman",
+    "variant": "gacksung",
+    "path": "Rodion/Kurokumo Henchwoman/10902_gacksung_profile.png"
+  },
+  {
+    "id": 10902,
+    "sinner": "Rodion",
+    "identity": "Kurokumo Henchwoman",
+    "variant": "normal",
+    "path": "Rodion/Kurokumo Henchwoman/10902_normal_profile.png"
+  },
+  {
+    "id": 10901,
+    "sinner": "Rodion",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Rodion/LCB Sinner/10901_gacksung_profile.png"
+  },
+  {
+    "id": 10903,
+    "sinner": "Rodion",
+    "identity": "LCCB Assistant Manager",
+    "variant": "gacksung",
+    "path": "Rodion/LCCB Assistant Manager/10903_gacksung_profile.png"
+  },
+  {
+    "id": 10903,
+    "sinner": "Rodion",
+    "identity": "LCCB Assistant Manager",
+    "variant": "normal",
+    "path": "Rodion/LCCB Assistant Manager/10903_normal_profile.png"
+  },
+  {
+    "id": 10908,
+    "sinner": "Rodion",
+    "identity": "Liu Assoc. South Section 4 Director",
+    "variant": "gacksung",
+    "path": "Rodion/Liu Assoc. South Section 4 Director/10908_gacksung_profile.png"
+  },
+  {
+    "id": 10908,
+    "sinner": "Rodion",
+    "identity": "Liu Assoc. South Section 4 Director",
+    "variant": "normal",
+    "path": "Rodion/Liu Assoc. South Section 4 Director/10908_normal_profile.png"
+  },
+  {
+    "id": 10913,
+    "sinner": "Rodion",
+    "identity": "Lobotomy E.G.O The Sword Sharpened With Tears",
+    "variant": "gacksung",
+    "path": "Rodion/Lobotomy E.G.O The Sword Sharpened With Tears/10913_gacksung_profile.png"
+  },
+  {
+    "id": 10913,
+    "sinner": "Rodion",
+    "identity": "Lobotomy E.G.O The Sword Sharpened With Tears",
+    "variant": "normal",
+    "path": "Rodion/Lobotomy E.G.O The Sword Sharpened With Tears/10913_normal_profile.png"
+  },
+  {
+    "id": 10904,
+    "sinner": "Rodion",
+    "identity": "N Corp. Mittelhammer",
+    "variant": "gacksung",
+    "path": "Rodion/N Corp. Mittelhammer/10904_gacksung_profile.png"
+  },
+  {
+    "id": 10904,
+    "sinner": "Rodion",
+    "identity": "N Corp. Mittelhammer",
+    "variant": "normal",
+    "path": "Rodion/N Corp. Mittelhammer/10904_normal_profile.png"
+  },
+  {
+    "id": 10914,
+    "sinner": "Rodion",
+    "identity": "R Corp. 4th Pack Reindeer",
+    "variant": "gacksung",
+    "path": "Rodion/R Corp. 4th Pack Reindeer/10914_gacksung_profile.png"
+  },
+  {
+    "id": 10914,
+    "sinner": "Rodion",
+    "identity": "R Corp. 4th Pack Reindeer",
+    "variant": "normal",
+    "path": "Rodion/R Corp. 4th Pack Reindeer/10914_normal_profile.png"
+  },
+  {
+    "id": 10905,
+    "sinner": "Rodion",
+    "identity": "Rosespanner Workshop Rep",
+    "variant": "gacksung",
+    "path": "Rodion/Rosespanner Workshop Rep/10905_gacksung_profile.png"
+  },
+  {
+    "id": 10905,
+    "sinner": "Rodion",
+    "identity": "Rosespanner Workshop Rep",
+    "variant": "normal",
+    "path": "Rodion/Rosespanner Workshop Rep/10905_normal_profile.png"
+  },
+  {
+    "id": 10909,
+    "sinner": "Rodion",
+    "identity": "T Corp. Class 2 Collection Staff",
+    "variant": "gacksung",
+    "path": "Rodion/T Corp. Class 2 Collection Staff/10909_gacksung_profile.png"
+  },
+  {
+    "id": 10909,
+    "sinner": "Rodion",
+    "identity": "T Corp. Class 2 Collection Staff",
+    "variant": "normal",
+    "path": "Rodion/T Corp. Class 2 Collection Staff/10909_normal_profile.png"
+  },
+  {
+    "id": 10916,
+    "sinner": "Rodion",
+    "identity": "The House of Spiders The Thumb Nursefather",
+    "variant": "gacksung",
+    "path": "Rodion/The House of Spiders The Thumb Nursefather/10916_gacksung_profile.png"
+  },
+  {
+    "id": 10916,
+    "sinner": "Rodion",
+    "identity": "The House of Spiders The Thumb Nursefather",
+    "variant": "normal",
+    "path": "Rodion/The House of Spiders The Thumb Nursefather/10916_normal_profile.png"
+  },
+  {
+    "id": 10911,
+    "sinner": "Rodion",
+    "identity": "The Princess of La ManchaLand",
+    "variant": "gacksung",
+    "path": "Rodion/The Princess of La ManchaLand/10911_gacksung_profile.png"
+  },
+  {
+    "id": 10911,
+    "sinner": "Rodion",
+    "identity": "The Princess of La ManchaLand",
+    "variant": "normal",
+    "path": "Rodion/The Princess of La ManchaLand/10911_normal_profile.png"
+  },
+  {
+    "id": 10915,
+    "sinner": "Rodion",
+    "identity": "The Ring Fauvist Docent",
+    "variant": "gacksung",
+    "path": "Rodion/The Ring Fauvist Docent/10915_gacksung_profile.png"
+  },
+  {
+    "id": 10915,
+    "sinner": "Rodion",
+    "identity": "The Ring Fauvist Docent",
+    "variant": "normal",
+    "path": "Rodion/The Ring Fauvist Docent/10915_normal_profile.png"
+  },
+  {
+    "id": 10906,
+    "sinner": "Rodion",
+    "identity": "Zwei Assoc. South Section 5",
+    "variant": "gacksung",
+    "path": "Rodion/Zwei Assoc. South Section 5/10906_gacksung_profile.png"
+  },
+  {
+    "id": 10906,
+    "sinner": "Rodion",
+    "identity": "Zwei Assoc. South Section 5",
+    "variant": "normal",
+    "path": "Rodion/Zwei Assoc. South Section 5/10906_normal_profile.png"
+  },
+  {
+    "id": 10415,
+    "sinner": "Ryoshu",
+    "identity": "Blade of the House of Spiders",
+    "variant": "gacksung",
+    "path": "Ryoshu/Blade of the House of Spiders/10415_gacksung_profile.png"
+  },
+  {
+    "id": 10415,
+    "sinner": "Ryoshu",
+    "identity": "Blade of the House of Spiders",
+    "variant": "normal",
+    "path": "Ryoshu/Blade of the House of Spiders/10415_normal_profile.png"
+  },
+  {
+    "id": 10409,
+    "sinner": "Ryoshu",
+    "identity": "District 20 Yurodivy",
+    "variant": "gacksung",
+    "path": "Ryoshu/District 20 Yurodivy/10409_gacksung_profile.png"
+  },
+  {
+    "id": 10409,
+    "sinner": "Ryoshu",
+    "identity": "District 20 Yurodivy",
+    "variant": "normal",
+    "path": "Ryoshu/District 20 Yurodivy/10409_normal_profile.png"
+  },
+  {
+    "id": 10413,
+    "sinner": "Ryoshu",
+    "identity": "Drifting Blade of Hongyuan",
+    "variant": "gacksung",
+    "path": "Ryoshu/Drifting Blade of Hongyuan/10413_gacksung_profile.png"
+  },
+  {
+    "id": 10413,
+    "sinner": "Ryoshu",
+    "identity": "Drifting Blade of Hongyuan",
+    "variant": "normal",
+    "path": "Ryoshu/Drifting Blade of Hongyuan/10413_normal_profile.png"
+  },
+  {
+    "id": 10408,
+    "sinner": "Ryoshu",
+    "identity": "Edgar Family Chief Butler",
+    "variant": "gacksung",
+    "path": "Ryoshu/Edgar Family Chief Butler/10408_gacksung_profile.png"
+  },
+  {
+    "id": 10408,
+    "sinner": "Ryoshu",
+    "identity": "Edgar Family Chief Butler",
+    "variant": "normal",
+    "path": "Ryoshu/Edgar Family Chief Butler/10408_normal_profile.png"
+  },
+  {
+    "id": 10411,
+    "sinner": "Ryoshu",
+    "identity": "Heishou Pack - Mao Branch",
+    "variant": "gacksung",
+    "path": "Ryoshu/Heishou Pack - Mao Branch/10411_gacksung_profile.png"
+  },
+  {
+    "id": 10411,
+    "sinner": "Ryoshu",
+    "identity": "Heishou Pack - Mao Branch",
+    "variant": "normal",
+    "path": "Ryoshu/Heishou Pack - Mao Branch/10411_normal_profile.png"
+  },
+  {
+    "id": 10403,
+    "sinner": "Ryoshu",
+    "identity": "Kurokumo Clan Wakashu",
+    "variant": "gacksung",
+    "path": "Ryoshu/Kurokumo Clan Wakashu/10403_gacksung_profile.png"
+  },
+  {
+    "id": 10403,
+    "sinner": "Ryoshu",
+    "identity": "Kurokumo Clan Wakashu",
+    "variant": "normal",
+    "path": "Ryoshu/Kurokumo Clan Wakashu/10403_normal_profile.png"
+  },
+  {
+    "id": 10401,
+    "sinner": "Ryoshu",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Ryoshu/LCB Sinner/10401_gacksung_profile.png"
+  },
+  {
+    "id": 10406,
+    "sinner": "Ryoshu",
+    "identity": "LCCB Assistant Manager",
+    "variant": "gacksung",
+    "path": "Ryoshu/LCCB Assistant Manager/10406_gacksung_profile.png"
+  },
+  {
+    "id": 10406,
+    "sinner": "Ryoshu",
+    "identity": "LCCB Assistant Manager",
+    "variant": "normal",
+    "path": "Ryoshu/LCCB Assistant Manager/10406_normal_profile.png"
+  },
+  {
+    "id": 10407,
+    "sinner": "Ryoshu",
+    "identity": "Liu Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Ryoshu/Liu Assoc. South Section 4/10407_gacksung_profile.png"
+  },
+  {
+    "id": 10407,
+    "sinner": "Ryoshu",
+    "identity": "Liu Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Ryoshu/Liu Assoc. South Section 4/10407_normal_profile.png"
+  },
+  {
+    "id": 10414,
+    "sinner": "Ryoshu",
+    "identity": "Lobotomy E.G.O Faint Aroma & Solitude",
+    "variant": "gacksung",
+    "path": "Ryoshu/Lobotomy E.G.O Faint Aroma & Solitude/10414_gacksung_profile.png"
+  },
+  {
+    "id": 10414,
+    "sinner": "Ryoshu",
+    "identity": "Lobotomy E.G.O Faint Aroma & Solitude",
+    "variant": "normal",
+    "path": "Ryoshu/Lobotomy E.G.O Faint Aroma & Solitude/10414_normal_profile.png"
+  },
+  {
+    "id": 10410,
+    "sinner": "Ryoshu",
+    "identity": "Lobotomy E.G.O Red Eyes & Penitence",
+    "variant": "gacksung",
+    "path": "Ryoshu/Lobotomy E.G.O Red Eyes & Penitence/10410_gacksung_profile.png"
+  },
+  {
+    "id": 10410,
+    "sinner": "Ryoshu",
+    "identity": "Lobotomy E.G.O Red Eyes & Penitence",
+    "variant": "normal",
+    "path": "Ryoshu/Lobotomy E.G.O Red Eyes & Penitence/10410_normal_profile.png"
+  },
+  {
+    "id": 10412,
+    "sinner": "Ryoshu",
+    "identity": "N Corp. E.G.O Contempt, Awe",
+    "variant": "gacksung",
+    "path": "Ryoshu/N Corp. E.G.O Contempt, Awe/10412_gacksung_profile.png"
+  },
+  {
+    "id": 10412,
+    "sinner": "Ryoshu",
+    "identity": "N Corp. E.G.O Contempt, Awe",
+    "variant": "normal",
+    "path": "Ryoshu/N Corp. E.G.O Contempt, Awe/10412_normal_profile.png"
+  },
+  {
+    "id": 10404,
+    "sinner": "Ryoshu",
+    "identity": "R.B. Chef de Cuisine",
+    "variant": "gacksung",
+    "path": "Ryoshu/R.B. Chef de Cuisine/10404_gacksung_profile.png"
+  },
+  {
+    "id": 10404,
+    "sinner": "Ryoshu",
+    "identity": "R.B. Chef de Cuisine",
+    "variant": "normal",
+    "path": "Ryoshu/R.B. Chef de Cuisine/10404_normal_profile.png"
+  },
+  {
+    "id": 10402,
+    "sinner": "Ryoshu",
+    "identity": "Seven Assoc. South Section 6",
+    "variant": "gacksung",
+    "path": "Ryoshu/Seven Assoc. South Section 6/10402_gacksung_profile.png"
+  },
+  {
+    "id": 10402,
+    "sinner": "Ryoshu",
+    "identity": "Seven Assoc. South Section 6",
+    "variant": "normal",
+    "path": "Ryoshu/Seven Assoc. South Section 6/10402_normal_profile.png"
+  },
+  {
+    "id": 10405,
+    "sinner": "Ryoshu",
+    "identity": "W Corp. L3 Cleanup Agent",
+    "variant": "gacksung",
+    "path": "Ryoshu/W Corp. L3 Cleanup Agent/10405_gacksung_profile.png"
+  },
+  {
+    "id": 10405,
+    "sinner": "Ryoshu",
+    "identity": "W Corp. L3 Cleanup Agent",
+    "variant": "normal",
+    "path": "Ryoshu/W Corp. L3 Cleanup Agent/10405_normal_profile.png"
+  },
+  {
+    "id": 11002,
+    "sinner": "Sinclair",
+    "identity": "Blade Lineage Salsu",
+    "variant": "gacksung",
+    "path": "Sinclair/Blade Lineage Salsu/11002_gacksung_profile.png"
+  },
+  {
+    "id": 11002,
+    "sinner": "Sinclair",
+    "identity": "Blade Lineage Salsu",
+    "variant": "normal",
+    "path": "Sinclair/Blade Lineage Salsu/11002_normal_profile.png"
+  },
+  {
+    "id": 11008,
+    "sinner": "Sinclair",
+    "identity": "Cinq Assoc. South Section 4 Director",
+    "variant": "gacksung",
+    "path": "Sinclair/Cinq Assoc. South Section 4 Director/11008_gacksung_profile.png"
+  },
+  {
+    "id": 11008,
+    "sinner": "Sinclair",
+    "identity": "Cinq Assoc. South Section 4 Director",
+    "variant": "normal",
+    "path": "Sinclair/Cinq Assoc. South Section 4 Director/11008_normal_profile.png"
+  },
+  {
+    "id": 11009,
+    "sinner": "Sinclair",
+    "identity": "Dawn Office Fixer",
+    "variant": "gacksung",
+    "path": "Sinclair/Dawn Office Fixer/11009_gacksung_profile.png"
+  },
+  {
+    "id": 11009,
+    "sinner": "Sinclair",
+    "identity": "Dawn Office Fixer",
+    "variant": "normal",
+    "path": "Sinclair/Dawn Office Fixer/11009_normal_profile.png"
+  },
+  {
+    "id": 11011,
+    "sinner": "Sinclair",
+    "identity": "Devyat_ Assoc. North Section 3",
+    "variant": "gacksung",
+    "path": "Sinclair/Devyat_ Assoc. North Section 3/11011_gacksung_profile.png"
+  },
+  {
+    "id": 11011,
+    "sinner": "Sinclair",
+    "identity": "Devyat_ Assoc. North Section 3",
+    "variant": "normal",
+    "path": "Sinclair/Devyat_ Assoc. North Section 3/11011_normal_profile.png"
+  },
+  {
+    "id": 11014,
+    "sinner": "Sinclair",
+    "identity": "Heishou Pack - You Branch",
+    "variant": "gacksung",
+    "path": "Sinclair/Heishou Pack - You Branch/11014_gacksung_profile.png"
+  },
+  {
+    "id": 11014,
+    "sinner": "Sinclair",
+    "identity": "Heishou Pack - You Branch",
+    "variant": "normal",
+    "path": "Sinclair/Heishou Pack - You Branch/11014_normal_profile.png"
+  },
+  {
+    "id": 11001,
+    "sinner": "Sinclair",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Sinclair/LCB Sinner/11001_gacksung_profile.png"
+  },
+  {
+    "id": 11006,
+    "sinner": "Sinclair",
+    "identity": "Lobotomy E.G.O Red Sheet",
+    "variant": "gacksung",
+    "path": "Sinclair/Lobotomy E.G.O Red Sheet/11006_gacksung_profile.png"
+  },
+  {
+    "id": 11006,
+    "sinner": "Sinclair",
+    "identity": "Lobotomy E.G.O Red Sheet",
+    "variant": "normal",
+    "path": "Sinclair/Lobotomy E.G.O Red Sheet/11006_normal_profile.png"
+  },
+  {
+    "id": 11004,
+    "sinner": "Sinclair",
+    "identity": "Los Mariachis Jefe",
+    "variant": "gacksung",
+    "path": "Sinclair/Los Mariachis Jefe/11004_gacksung_profile.png"
+  },
+  {
+    "id": 11004,
+    "sinner": "Sinclair",
+    "identity": "Los Mariachis Jefe",
+    "variant": "normal",
+    "path": "Sinclair/Los Mariachis Jefe/11004_normal_profile.png"
+  },
+  {
+    "id": 11007,
+    "sinner": "Sinclair",
+    "identity": "Molar Boatworks Fixer",
+    "variant": "gacksung",
+    "path": "Sinclair/Molar Boatworks Fixer/11007_gacksung_profile.png"
+  },
+  {
+    "id": 11007,
+    "sinner": "Sinclair",
+    "identity": "Molar Boatworks Fixer",
+    "variant": "normal",
+    "path": "Sinclair/Molar Boatworks Fixer/11007_normal_profile.png"
+  },
+  {
+    "id": 11015,
+    "sinner": "Sinclair",
+    "identity": "The House of Spiders The Pinky Apprentice",
+    "variant": "gacksung",
+    "path": "Sinclair/The House of Spiders The Pinky Apprentice/11015_gacksung_profile.png"
+  },
+  {
+    "id": 11015,
+    "sinner": "Sinclair",
+    "identity": "The House of Spiders The Pinky Apprentice",
+    "variant": "normal",
+    "path": "Sinclair/The House of Spiders The Pinky Apprentice/11015_normal_profile.png"
+  },
+  {
+    "id": 11012,
+    "sinner": "Sinclair",
+    "identity": "The Middle Little Brother",
+    "variant": "gacksung",
+    "path": "Sinclair/The Middle Little Brother/11012_gacksung_profile.png"
+  },
+  {
+    "id": 11012,
+    "sinner": "Sinclair",
+    "identity": "The Middle Little Brother",
+    "variant": "normal",
+    "path": "Sinclair/The Middle Little Brother/11012_normal_profile.png"
+  },
+  {
+    "id": 11005,
+    "sinner": "Sinclair",
+    "identity": "The One Who Shall Grip",
+    "variant": "gacksung",
+    "path": "Sinclair/The One Who Shall Grip/11005_gacksung_profile.png"
+  },
+  {
+    "id": 11005,
+    "sinner": "Sinclair",
+    "identity": "The One Who Shall Grip",
+    "variant": "normal",
+    "path": "Sinclair/The One Who Shall Grip/11005_normal_profile.png"
+  },
+  {
+    "id": 11013,
+    "sinner": "Sinclair",
+    "identity": "The Thumb East Soldato II",
+    "variant": "gacksung",
+    "path": "Sinclair/The Thumb East Soldato II/11013_gacksung_profile.png"
+  },
+  {
+    "id": 11013,
+    "sinner": "Sinclair",
+    "identity": "The Thumb East Soldato II",
+    "variant": "normal",
+    "path": "Sinclair/The Thumb East Soldato II/11013_normal_profile.png"
+  },
+  {
+    "id": 11003,
+    "sinner": "Sinclair",
+    "identity": "Zwei Assoc. South Section 6",
+    "variant": "gacksung",
+    "path": "Sinclair/Zwei Assoc. South Section 6/11003_gacksung_profile.png"
+  },
+  {
+    "id": 11003,
+    "sinner": "Sinclair",
+    "identity": "Zwei Assoc. South Section 6",
+    "variant": "normal",
+    "path": "Sinclair/Zwei Assoc. South Section 6/11003_normal_profile.png"
+  },
+  {
+    "id": 11010,
+    "sinner": "Sinclair",
+    "identity": "Zwei Assoc. West Section 3",
+    "variant": "gacksung",
+    "path": "Sinclair/Zwei Assoc. West Section 3/11010_gacksung_profile.png"
+  },
+  {
+    "id": 11010,
+    "sinner": "Sinclair",
+    "identity": "Zwei Assoc. West Section 3",
+    "variant": "normal",
+    "path": "Sinclair/Zwei Assoc. West Section 3/11010_normal_profile.png"
+  },
+  {
+    "id": 10103,
+    "sinner": "Yi Sang",
+    "identity": "Blade Lineage Salsu",
+    "variant": "gacksung",
+    "path": "Yi Sang/Blade Lineage Salsu/10103_gacksung_profile.png"
+  },
+  {
+    "id": 10103,
+    "sinner": "Yi Sang",
+    "identity": "Blade Lineage Salsu",
+    "variant": "normal",
+    "path": "Yi Sang/Blade Lineage Salsu/10103_normal_profile.png"
+  },
+  {
+    "id": 10108,
+    "sinner": "Yi Sang",
+    "identity": "Dieci Assoc. South Section 4",
+    "variant": "gacksung",
+    "path": "Yi Sang/Dieci Assoc. South Section 4/10108_gacksung_profile.png"
+  },
+  {
+    "id": 10108,
+    "sinner": "Yi Sang",
+    "identity": "Dieci Assoc. South Section 4",
+    "variant": "normal",
+    "path": "Yi Sang/Dieci Assoc. South Section 4/10108_normal_profile.png"
+  },
+  {
+    "id": 10104,
+    "sinner": "Yi Sang",
+    "identity": "Effloresced E.G.O Spicebush",
+    "variant": "gacksung",
+    "path": "Yi Sang/Effloresced E.G.O Spicebush/10104_gacksung_profile.png"
+  },
+  {
+    "id": 10104,
+    "sinner": "Yi Sang",
+    "identity": "Effloresced E.G.O Spicebush",
+    "variant": "normal",
+    "path": "Yi Sang/Effloresced E.G.O Spicebush/10104_normal_profile.png"
+  },
+  {
+    "id": 10114,
+    "sinner": "Yi Sang",
+    "identity": "Heishou Pack - Wu Branch",
+    "variant": "gacksung",
+    "path": "Yi Sang/Heishou Pack - Wu Branch/10114_gacksung_profile.png"
+  },
+  {
+    "id": 10114,
+    "sinner": "Yi Sang",
+    "identity": "Heishou Pack - Wu Branch",
+    "variant": "normal",
+    "path": "Yi Sang/Heishou Pack - Wu Branch/10114_normal_profile.png"
+  },
+  {
+    "id": 10101,
+    "sinner": "Yi Sang",
+    "identity": "LCB Sinner",
+    "variant": "gacksung",
+    "path": "Yi Sang/LCB Sinner/10101_gacksung_profile.png"
+  },
+  {
+    "id": 10116,
+    "sinner": "Yi Sang",
+    "identity": "LCE E.G.O Dimension Shredder",
+    "variant": "gacksung",
+    "path": "Yi Sang/LCE E.G.O Dimension Shredder/10116_gacksung_profile.png"
+  },
+  {
+    "id": 10116,
+    "sinner": "Yi Sang",
+    "identity": "LCE E.G.O Dimension Shredder",
+    "variant": "normal",
+    "path": "Yi Sang/LCE E.G.O Dimension Shredder/10116_normal_profile.png"
+  },
+  {
+    "id": 10111,
+    "sinner": "Yi Sang",
+    "identity": "LCE E.G.O Lantern",
+    "variant": "gacksung",
+    "path": "Yi Sang/LCE E.G.O Lantern/10111_gacksung_profile.png"
+  },
+  {
+    "id": 10111,
+    "sinner": "Yi Sang",
+    "identity": "LCE E.G.O Lantern",
+    "variant": "normal",
+    "path": "Yi Sang/LCE E.G.O Lantern/10111_normal_profile.png"
+  },
+  {
+    "id": 10112,
+    "sinner": "Yi Sang",
+    "identity": "Liu Assoc. South Section 3",
+    "variant": "gacksung",
+    "path": "Yi Sang/Liu Assoc. South Section 3/10112_gacksung_profile.png"
+  },
+  {
+    "id": 10112,
+    "sinner": "Yi Sang",
+    "identity": "Liu Assoc. South Section 3",
+    "variant": "normal",
+    "path": "Yi Sang/Liu Assoc. South Section 3/10112_normal_profile.png"
+  },
+  {
+    "id": 10110,
+    "sinner": "Yi Sang",
+    "identity": "Lobotomy E.G.O Solemn Lament",
+    "variant": "gacksung",
+    "path": "Yi Sang/Lobotomy E.G.O Solemn Lament/10110_gacksung_profile.png"
+  },
+  {
+    "id": 10110,
+    "sinner": "Yi Sang",
+    "identity": "Lobotomy E.G.O Solemn Lament",
+    "variant": "normal",
+    "path": "Yi Sang/Lobotomy E.G.O Solemn Lament/10110_normal_profile.png"
+  },
+  {
+    "id": 10105,
+    "sinner": "Yi Sang",
+    "identity": "Molar Office Fixer",
+    "variant": "gacksung",
+    "path": "Yi Sang/Molar Office Fixer/10105_gacksung_profile.png"
+  },
+  {
+    "id": 10105,
+    "sinner": "Yi Sang",
+    "identity": "Molar Office Fixer",
+    "variant": "normal",
+    "path": "Yi Sang/Molar Office Fixer/10105_normal_profile.png"
+  },
+  {
+    "id": 10113,
+    "sinner": "Yi Sang",
+    "identity": "N Corp. E.G.O Fell Bullet",
+    "variant": "gacksung",
+    "path": "Yi Sang/N Corp. E.G.O Fell Bullet/10113_gacksung_profile.png"
+  },
+  {
+    "id": 10113,
+    "sinner": "Yi Sang",
+    "identity": "N Corp. E.G.O Fell Bullet",
+    "variant": "normal",
+    "path": "Yi Sang/N Corp. E.G.O Fell Bullet/10113_normal_profile.png"
+  },
+  {
+    "id": 10102,
+    "sinner": "Yi Sang",
+    "identity": "Seven Assoc. South Section 6",
+    "variant": "gacksung",
+    "path": "Yi Sang/Seven Assoc. South Section 6/10102_gacksung_profile.png"
+  },
+  {
+    "id": 10102,
+    "sinner": "Yi Sang",
+    "identity": "Seven Assoc. South Section 6",
+    "variant": "normal",
+    "path": "Yi Sang/Seven Assoc. South Section 6/10102_normal_profile.png"
+  },
+  {
+    "id": 10115,
+    "sinner": "Yi Sang",
+    "identity": "The House of Spiders The Index Nursefather",
+    "variant": "gacksung",
+    "path": "Yi Sang/The House of Spiders The Index Nursefather/10115_gacksung_profile.png"
+  },
+  {
+    "id": 10115,
+    "sinner": "Yi Sang",
+    "identity": "The House of Spiders The Index Nursefather",
+    "variant": "normal",
+    "path": "Yi Sang/The House of Spiders The Index Nursefather/10115_normal_profile.png"
+  },
+  {
+    "id": 10107,
+    "sinner": "Yi Sang",
+    "identity": "The Pequod First Mate",
+    "variant": "gacksung",
+    "path": "Yi Sang/The Pequod First Mate/10107_gacksung_profile.png"
+  },
+  {
+    "id": 10107,
+    "sinner": "Yi Sang",
+    "identity": "The Pequod First Mate",
+    "variant": "normal",
+    "path": "Yi Sang/The Pequod First Mate/10107_normal_profile.png"
+  },
+  {
+    "id": 10109,
+    "sinner": "Yi Sang",
+    "identity": "The Ring Pointillist Student",
+    "variant": "gacksung",
+    "path": "Yi Sang/The Ring Pointillist Student/10109_gacksung_profile.png"
+  },
+  {
+    "id": 10109,
+    "sinner": "Yi Sang",
+    "identity": "The Ring Pointillist Student",
+    "variant": "normal",
+    "path": "Yi Sang/The Ring Pointillist Student/10109_normal_profile.png"
+  },
+  {
+    "id": 10106,
+    "sinner": "Yi Sang",
+    "identity": "W Corp. L3 Cleanup Agent",
+    "variant": "gacksung",
+    "path": "Yi Sang/W Corp. L3 Cleanup Agent/10106_gacksung_profile.png"
+  },
+  {
+    "id": 10106,
+    "sinner": "Yi Sang",
+    "identity": "W Corp. L3 Cleanup Agent",
+    "variant": "normal",
+    "path": "Yi Sang/W Corp. L3 Cleanup Agent/10106_normal_profile.png"
+  }
+]

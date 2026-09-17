@@ -1,0 +1,10 @@
+{
+  "source": "tests/fixtures/menus/settings_menu_highlighted.png (resized to 1920x1080)",
+  "box": [
+    757,
+    527,
+    409,
+    63
+  ],
+  "note": "Retry Stage while hovered (orange); used alongside retry_stage_button.png, which scores only 0.69 on it"
+}

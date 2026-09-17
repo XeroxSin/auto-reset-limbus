@@ -1,0 +1,15 @@
+{
+  "source": "tests/fixtures/screens/screen_20260916_145805.png",
+  "size": [
+    120,
+    120
+  ],
+  "art_box": [
+    -35,
+    -33,
+    71,
+    66
+  ],
+  "frames_used": 5,
+  "mask_coverage": 0.213
+}
