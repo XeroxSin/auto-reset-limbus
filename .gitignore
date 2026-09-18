@@ -4,6 +4,9 @@ docs/
 # tests and fixtures (kept locally)
 tests/
 
+# personal configs
+configs/mine.json
+
 # labelled screenshots for checking the reader (game art)
 data/
 

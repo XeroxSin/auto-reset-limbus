@@ -1,73 +1,40 @@
 {
-  "sinners": ["Faust", "Ishmael", "Ryoshu", "Sinclair"],
+  "sinners": ["Heathcliff", "Sinclair", "Don Quixote", "Ishmael"],
   "constraints": {
-    "not_maust_s3_bot": {
-      "constraint_type": "not",
-      "constraint_info": {
-        "constraint_type": "skill_tier",
-        "constraint_info": {"unit": "Faust", "slot": "bottom", "tier": 3}
-      }
+    "heathcliff_first": {
+      "constraint_type": "order_absolute",
+      "constraint_info": {"unit": "Heathcliff", "position": 0}
     },
-    "not_maust_s3_top": {
-      "constraint_type": "not",
-      "constraint_info": {
-        "constraint_type": "skill_tier",
-        "constraint_info": {"unit": "Faust", "slot": "top", "tier": 3}
-      }
+    "dq_in_front_three": {
+      "constraint_type": "order_absolute",
+      "constraint_info": {"unit": {"sinner": "Don Quixote", "column": "first"}, "position": [0, 1, 2]}
     },
-    "not_lccb_ish_s3_top": {
-      "constraint_type": "not",
-      "constraint_info": {
-        "constraint_type": "skill_tier",
-        "constraint_info": {"unit": "Ishmael", "slot": "top", "tier": 3}
-      }
+    "sinclair_before_ishmael": {
+      "constraint_type": "order_relative",
+      "constraint_info": {"unit": "Sinclair", "relation": "before", "other": "Ishmael"}
     },
-    "not_lccb_ish_s3_bot": {
-      "constraint_type": "not",
-      "constraint_info": {
-        "constraint_type": "skill_tier",
-        "constraint_info": {"unit": "Ishmael", "slot": "bottom", "tier": 3}
-      }
-    },
-    "lccb_ish_s2_top": {
+    "dq_next_s3": {
       "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Ishmael", "slot": "top", "tier": 2}
+      "constraint_info": {"unit": "Don Quixote", "slot": "next", "tier": 3}
     },
-    "lccb_ish_s2_bot": {
+    "heathcliff_top_s3": {
       "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Ishmael", "slot": "bottom", "tier": 2}
+      "constraint_info": {"unit": "Heathcliff", "slot": "top", "tier": 3}
     },
-    "lccb_ish_s2": {
+    "ishmael_top_s2_or_s3": {
+      "constraint_type": "skill_tier",
+      "constraint_info": {"unit": {"sinner": "Ishmael", "column": "any"}, "slot": "top", "tier": [2, 3]}
+    },
+    "heathcliff_or_ishmael_top": {
       "constraint_type": "or",
-      "constraint_info": ["lccb_ish_s2_top", "lccb_ish_s2_bot"]
+      "constraint_info": ["heathcliff_top_s3", "ishmael_top_s2_or_s3"]
     },
-    "nryo_s3_top": {
-      "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Ryoshu", "slot": "top", "tier": 3}
-    },
-    "nryo_s3_bot": {
-      "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Ryoshu", "slot": "bottom", "tier": 3}
-    },
-    "nryo_s3": {
-      "constraint_type": "or",
-      "constraint_info": ["nryo_s3_top", "nryo_s3_bot"]
-    },
-    "thumbclair_s3_top": {
-      "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Sinclair", "slot": "top", "tier": 3}
-    },
-    "thumbclair_s3_bot": {
-      "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Sinclair", "slot": "bottom", "tier": 3}
-    },
-    "thumbclair_s3_next": {
-      "constraint_type": "skill_tier",
-      "constraint_info": {"unit": "Sinclair", "slot": "next", "tier": 3}
-    },
-    "thumbclair_s3": {
-      "constraint_type": "or",
-      "constraint_info": ["thumbclair_s3_top", "thumbclair_s3_bot", "thumbclair_s3_next"]
+    "dq_not_last": {
+      "constraint_type": "not",
+      "constraint_info": {
+        "constraint_type": "order_absolute",
+        "constraint_info": {"unit": "Don Quixote", "position": 5}
+      }
     }
   }
 }

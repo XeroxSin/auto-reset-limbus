@@ -25,7 +25,9 @@ A config is a JSON file that lists the sinners you care about and the conditions
 
 `tools/auto_reset.py` uses **`configs/config.json`** when you don't pass a config path.
 
-The `configs/config.json` in this repository is an **example**: it uses every constraint type so you can copy from it. Replace its contents with your own team and conditions, or keep several configs and pass the one you want (see [Run the code](#2-run-the-code)).
+The `configs/config.json` in this repository is an **example**: it uses every constraint type so you can copy from it.
+
+Keep your own conditions in a separate file and pass its path, e.g. `python tools/auto_reset.py configs/mine.json`. `configs/mine.json` is git-ignored, so your team's config stays out of the repository.
 
 ```json
 {
