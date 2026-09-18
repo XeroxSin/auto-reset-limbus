@@ -2,8 +2,8 @@
 
 Combines capture_screen (game window grab), portraits (action bar columns),
 identify (which identity is in each column) and skills (bottom row, top row
-and next-in-line skill). Sins are only used internally to pin down the tier
-and are not written.
+and next-in-line skill). Only the tier of each skill is read; sins are not
+used at all.
 
 Output:
     {
@@ -41,7 +41,7 @@ from pathlib import Path
 import capture_screen as cap
 from identify import identify, load_bank
 from portraits import find_portraits, load_screen, load_template, to_base
-from skills import LAYERS, load_borders, read_skills, sin_hues
+from skills import LAYERS, load_borders, read_skills
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "output"
@@ -52,22 +52,20 @@ log = logging.getLogger(__name__)
 class BattleReader:
     """Loads all templates once; read() can then be called on every frame."""
 
-    def __init__(self, sin_mode="shape", sinners=None):
+    def __init__(self, sinners=None):
         """sinners: optional set of sinner names; other units are reported as not listed
         (sinner / identity / skills null) and their skills are not read."""
-        self.sin_mode = sin_mode
         self.restricted = sinners is not None
         self.frame_template = load_template()
         self.profiles = load_bank(sinners=sinners)
         self.borders = load_borders()
-        self.hues = sin_hues()
 
     def read(self, img):
         """img: BGR frame of the game area (any 16:9 size). Returns the state dict (without source)."""
         img = to_base(img)
         units = find_portraits(img, self.frame_template)
         identify(img, units, self.profiles, self.restricted)
-        read_skills(img, [u for u in units if u["listed"]], self.borders, self.sin_mode, self.hues)
+        read_skills(img, [u for u in units if u["listed"]], self.borders)
         log_units(units)
 
         out, warnings = [], []
@@ -88,7 +86,6 @@ class BattleReader:
             if not u["confident"]:
                 warnings.append(f"unit {u['order']}: identity low confidence "
                                 f"(score {u['id_score']:.2f}, margin {u['margin']:.2f})")
-            warnings += [f"unit {u['order']}: {w}" for w in u["skill_warnings"]]
             out.append({
                 "order": u["order"],
                 "sinner": u["sinner"],
@@ -115,11 +112,9 @@ def log_units(units):
             if s is None:
                 log.debug("    %-6s not found", layer)
                 continue
-            log.debug("    %-6s %s skill %d  score %.3f margin %.3f  shape %s / color %s (gap %.3f)%s",
-                      layer, s["sin"], s["tier"], s["score"], s["margin"], s["shape_sin"], s["color_sin"],
-                      s["color_gap"], "" if s["confident"] else "  LOW CONFIDENCE")
-        for w in u["skill_warnings"]:
-            log.debug("    warning: %s", w)
+            log.debug("    %-6s skill %d  score %.3f margin %.3f (vs %s, border %s)%s",
+                      layer, s["tier"], s["score"], s["margin"], s["runner_up"], s["border"],
+                      "" if s["confident"] else "  LOW CONFIDENCE")
 
 
 def find_game(title):
@@ -179,8 +174,6 @@ def main():
     ap.add_argument("-t", "--title", default=cap.WINDOW_TITLE, help="game window title")
     ap.add_argument("--save-screenshot", action="store_true",
                     help="keep the live capture in tests/fixtures/screens for later testing")
-    ap.add_argument("--sin-mode", choices=("shape", "color"), default="shape",
-                    help="how sins are told apart while reading tiers (default shape)")
     ap.add_argument("-c", "--config", type=Path,
                     help="only look for the sinners listed in this verify config")
     args = ap.parse_args()
@@ -201,7 +194,7 @@ def main():
             sys.exit(f"error: {e}")
 
     print("loading templates...")
-    reader = BattleReader(args.sin_mode, sinners)
+    reader = BattleReader(sinners)
     print("templates loaded")
 
     jobs = []  # (source name, capture time, image, window rect, output path)

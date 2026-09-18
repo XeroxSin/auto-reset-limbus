@@ -1,11 +1,13 @@
 """Find the identity portraits in the battle action bar and box them.
 
 Portraits sit in hexagonal frames along the bottom of the battle screen, one
-per action column. They are found with a masked grayscale template of the
-frame (assets/templates/portrait_frame*.png, made by build_portrait_template.py);
-the mask drops everything that differs between units or over a fight (art,
-HP / sanity numbers, HP ring and ticks, sin stripe), so only the fixed dark
-frame is compared.
+per action column. They are found by their edges: the screen and the frame
+template (assets/templates/portrait_frame*.png, made by
+build_portrait_template.py) are both run through Canny, so only the shape of
+the frame is compared and screen-wide color effects (the red glow of some
+stages) can't wash it out. The mask drops everything that differs between
+units or over a fight (art, HP / sanity numbers, HP ring and ticks, sin
+stripe).
 
 All coordinates are 1920x1080: screenshots are resized to that first.
 
@@ -28,7 +30,7 @@ DEFAULT_OUT = ROOT / "tests" / "output" / "portraits"
 
 BASE_W, BASE_H = 1920, 1080
 SEARCH_BAND = (860, 1080)   # y range of the portrait row
-MIN_SCORE = 0.6             # TM_CCOEFF_NORMED; true frames 0.92-0.99, best non-frame ~0.39
+MIN_SCORE = 0.5             # edge TM_CCORR_NORMED; true frames 0.70-0.91, best non-frame 0.25
 MIN_GAP = 80                # px between portrait centers (real spacing ~122)
 COLUMN_STEP = 121.75        # measured center-to-center spacing
 
@@ -55,11 +57,18 @@ def load_template():
     return tpl, mask, json.loads(meta_path.read_text())
 
 
-def match_frames(gray, tpl, mask, min_score=MIN_SCORE, band=SEARCH_BAND):
-    """Return [(cx, cy, score)] of frame centers, sorted left to right."""
+def edges(img):
+    """Canny edge map; takes a BGR frame or an already gray/edge template."""
+    if img.ndim == 3:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    return cv2.Canny(img, 100, 200)
+
+
+def match_frames(img, tpl, mask, min_score=MIN_SCORE, band=SEARCH_BAND):
+    """img: BGR frame. Returns [(cx, cy, score)] of frame centers, sorted left to right."""
     th, tw = tpl.shape
     y0, y1 = band
-    res = cv2.matchTemplate(gray[y0:y1], tpl, cv2.TM_CCOEFF_NORMED, mask=mask)
+    res = cv2.matchTemplate(edges(img[y0:y1]), edges(tpl), cv2.TM_CCORR_NORMED, mask=mask)
     res = np.nan_to_num(res, nan=-1.0, posinf=-1.0, neginf=-1.0)
 
     hits = []
@@ -81,11 +90,10 @@ def find_portraits(img, template=None, min_score=MIN_SCORE):
       art:   (x, y, w, h) of the identity art inside it.
     """
     tpl, mask, meta = template or load_template()
-    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     th, tw = tpl.shape
     ax, ay, aw, ah = meta["art_box"]  # relative to frame center
     out = []
-    for i, (cx, cy, score) in enumerate(match_frames(gray, tpl, mask, min_score)):
+    for i, (cx, cy, score) in enumerate(match_frames(img, tpl, mask, min_score)):
         out.append({
             "order": i,
             "center": (cx, cy),

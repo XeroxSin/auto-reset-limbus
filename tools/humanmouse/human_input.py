@@ -234,6 +234,21 @@ def click(x=None, y=None, tsize=(5.0, 5.0), button="left", delay=0.03):
     time.sleep(random.uniform(delay, delay + 0.05))
 
 
+def drag(x1, y1, x2, y2, tsize=(5.0, 5.0), button="left", delay=0.03):
+    """Press at (x1, y1), move to (x2, y2) with the button held, release there."""
+    fail_safe_check()
+    move_to(x1, y1, tsize=tsize)
+    fail_safe_check()
+    send_mouse_button(button, True)
+    try:
+        time.sleep(click_hold())            # settle before moving, as a hand would
+        move_to(x2, y2, tsize=tsize)
+        time.sleep(click_hold())
+    finally:
+        send_mouse_button(button, False)
+    time.sleep(random.uniform(delay, delay + 0.05))
+
+
 def press(key, delay=0.09):
     time.sleep(jitter(delay))
     fail_safe_check()

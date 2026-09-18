@@ -2,10 +2,16 @@
 
 Loop:
   1. wait until a battle turn is showing (portraits found, Esc menu closed),
-  2. capture, read the state and check it against the config; an unclear read
-     is captured again, up to 3 reads in total (see verify_state.py),
+  2. capture and read the state:
+       readable -> check it against the config (see verify_state.py),
+       unclear  -> drag the battlefield upward, so the skill icons end up over
+                   plain ground instead of busy stage art, wait, and capture
+                   again; up to 3 reads in total,
   3. valid: stop. invalid: move the cursor out of the way, Esc -> Retry Stage,
-     wait 3 s, back to 1.
+     wait, back to 1.
+
+The wait after a reset and before a re-capture is the same, 3 s by default
+(-w/--wait).
 
 There is no reset limit: press Ctrl+C in this terminal to stop. Whenever the
 game is not the foreground window, everything pauses; once it is back in
@@ -20,6 +26,8 @@ Usage:
     python tools/auto_reset.py                                # uses configs/config.json
     python tools/auto_reset.py configs/other.json
     python tools/auto_reset.py -d 10                          # longer start delay
+    python tools/auto_reset.py -w 5                           # wait 5 s after a reset / before a re-capture
+    python tools/auto_reset.py --no-pan                       # never drag the battlefield
     python tools/auto_reset.py --save                         # also write every read to output/
 """
 import argparse
@@ -35,14 +43,16 @@ import capture_screen as cap
 import retry_stage as rs
 from humanmouse import human_input as hi
 from portraits import find_portraits, to_base
-from verify_state import (EXIT, EXIT_ERROR, MAX_READS, REREAD_PAUSE, ConfigError, load_config, report_lines,
-                          roster, verify_live)
+from verify_state import (EXIT, EXIT_ERROR, MAX_READS, ConfigError, load_config, report_lines, roster,
+                          verify_live)
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = ROOT / "configs" / "config.json"
 LOG_DIR = ROOT / "output" / "logs"
 START_DELAY = 5.0       # time to switch to the game
-RESET_WAIT = 3.0        # after clicking Retry Stage, before looking for the next turn
+WAIT = 3.0              # after clicking Retry Stage, and before a re-capture
+PAN_FROM = (960, 745)   # 1080p: empty ground under the party, clear of the units and the skill rows
+PAN_DY = 140            # how far up to drag the battlefield
 POLL = 0.5              # between checks for the battle turn
 SETTLE = 0.5            # after the turn shows up, so the skill icons finish fading in
 RESUME_SETTLE = 0.5     # after the game comes back to the front
@@ -128,6 +138,30 @@ def wait_for_turn(game, template, button):
     game.sleep(SETTLE)
 
 
+def to_screen(rect, x, y):
+    """1080p point -> screen point, for the game area at `rect`."""
+    left, top, w, _ = rect
+    s = w / 1920
+    return left + x * s, top + y * s
+
+
+def pan_up(game, dy):
+    """Drag the battlefield upward. The skill icons stay where they are, but what
+    sits behind them becomes plain ground, which the faint next-in-line icon
+    reads far better on."""
+    game.check()
+    rect = cap.game_rect(game.hwnd)
+    start = to_screen(rect, *PAN_FROM)
+    end = to_screen(rect, PAN_FROM[0], PAN_FROM[1] - dy)
+    try:
+        hi.drag(*start, *end)
+    except hi.FocusLost as e:
+        log.info("focus lost while panning (foreground: %s)", e)
+        raise Paused from None
+    log.info("panned the battlefield up %d px (%s -> %s)", dy,
+             tuple(map(round, start)), tuple(map(round, end)))
+
+
 def reset(game, button):
     game.check()
     try:
@@ -144,9 +178,12 @@ def main():
                     help="verify config JSON (default configs/config.json)")
     ap.add_argument("-d", "--delay", type=float, default=START_DELAY,
                     help=f"seconds to switch to the game before starting (default {START_DELAY:g})")
+    ap.add_argument("-w", "--wait", type=float, default=WAIT,
+                    help=f"seconds to wait after a reset and before a re-capture (default {WAIT:g})")
+    ap.add_argument("--pan-dy", type=int, default=PAN_DY,
+                    help=f"how far to drag the battlefield up after an unclear read (default {PAN_DY})")
+    ap.add_argument("--no-pan", action="store_true", help="never drag the battlefield")
     ap.add_argument("-t", "--title", default=cap.WINDOW_TITLE, help="game window title")
-    ap.add_argument("--sin-mode", choices=("shape", "color"), default="shape",
-                    help="how sins are told apart while reading tiers (default shape)")
     ap.add_argument("--save", action="store_true", help="also write every read to output/ like battle_state.py")
     args = ap.parse_args()
 
@@ -169,14 +206,19 @@ def main():
         console.error(f"error: {e}")
         sys.exit(EXIT_ERROR)
     log.info("game window %s, rect %s; loading templates", game.hwnd, cap.game_rect(game.hwnd))
-    reader = bs.BattleReader(args.sin_mode, roster(config))
+    reader = bs.BattleReader(roster(config))
     log.info("templates loaded (%d profile windows)", len(reader.profiles))
 
-    check_no = 0
+    check_no, panned = 0, False
 
     def read_state(attempt):
+        nonlocal panned
         if attempt:
-            game.sleep(REREAD_PAUSE)
+            if not args.no_pan and not panned:
+                console.info(f"check {check_no}: read was unclear, dragging the view up")
+                pan_up(game, args.pan_dy)
+                panned = True
+            game.sleep(args.wait)
             console.info(f"check {check_no}: capturing again (read {attempt + 1} of {MAX_READS})")
         else:
             console.info(f"check {check_no}: capturing")
@@ -203,10 +245,10 @@ def main():
                     reset(game, button)
                     pending_reset = False
                     resets += 1
-                    log.info("reset %d done; waiting %.1f s", resets, RESET_WAIT)
-                    game.sleep(RESET_WAIT)
+                    log.info("reset %d done; waiting %.1f s", resets, args.wait)
+                    game.sleep(args.wait)
                 wait_for_turn(game, reader.frame_template, button)
-                check_no = resets + 1
+                check_no, panned = resets + 1, False
                 result, _ = verify_live(read_state, config)
                 log.debug("result: %s", json.dumps(result))
                 for line in report_lines(f"check {check_no}", result):

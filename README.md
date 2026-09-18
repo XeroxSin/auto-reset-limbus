@@ -182,12 +182,15 @@ Run the commands below from the repository folder.
 python tools/auto_reset.py                      # uses configs/config.json
 python tools/auto_reset.py configs/other.json   # uses another config
 python tools/auto_reset.py -d 10                # 10 s to switch to the game (default 5)
+python tools/auto_reset.py -w 5                 # wait 5 s after a reset and before a re-capture (default 3)
+python tools/auto_reset.py --no-pan             # never drag the battlefield
 python tools/auto_reset.py --save               # also save every read to output/
 ```
 
 1. **Start a battle.** Start the battle you want to reset, and let it reach the first turn, where you would choose skills.
 2. **Run the command.** Then switch to the game before the countdown ends.
 3. **Let it run.** Each round it waits for the turn, captures the screen and checks it.
+   - If the read is unclear, it drags the battlefield up, waits, and captures again (see **Unknown results** below).
    - If the check fails, it moves the cursor out of the way, presses Esc, clicks **Retry Stage**, waits 3 seconds and checks again.
    - Once the check passes, it stops.
 
@@ -218,10 +221,10 @@ check 3:
    retrying the stage
 ```
 
-**Unknown results.** A constraint is `unknown` when the tool couldn't read what it needs: the sinner wasn't found, a skill wasn't recognised, or the read had low confidence.
+**Unknown results.** A constraint is `unknown` when the tool couldn't read what it needs: the sinner wasn't found, a skill wasn't recognised, or the read had low confidence. A shaky read of one skill slot only makes checks of that slot unknown; a shaky identity makes every check of that unit unknown.
 
-- If an unknown can change the verdict, the screen is captured again, up to 3 times in total.
-- If it's still unclear after that, the round counts as failed and the stage is retried.
+- If an unknown can change the verdict, the tool **drags the battlefield upward** and captures again, up to 3 reads in total. Dragging leaves the icons where they are but puts plain ground behind them, which the faint next-in-line icon reads much better on. `--no-pan` turns this off and `--pan-dy` changes how far it drags (140 px by default, in 1080p terms).
+- If it's still unclear after 3 reads, the round counts as failed and the stage is retried.
 
 **Logs.** Every run writes a detailed log to `output/logs/auto_reset_<date>_<time>.log`. The log includes identity and skill match scores, button scores, mouse movements and the raw reads.
 
@@ -235,6 +238,8 @@ check 3:
 | `python tools/battle_state.py screenshot.png`        | Reads a saved screenshot instead of the live game.                                                                                                      |
 | `python tools/retry_stage.py`                        | Presses Esc and clicks Retry Stage once.                                                                                                                |
 | `python tools/capture_screen.py`                     | Saves a screenshot of the game area.                                                                                                                    |
+| `python tools/next_crops.py shot.png`               | Writes the patch each unit's next-in-line skill is read from to `output/next_crops/`, to check recognition by eye. |
+| `python tools/check_labels.py`                      | Scores the skill reader against the labelled screenshots in `data/labelled/` (see the README there). |
 
 Each tool prints its full usage with `--help`.
 

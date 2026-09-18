@@ -4,6 +4,9 @@ docs/
 # tests and fixtures (kept locally)
 tests/
 
+# labelled screenshots for checking the reader (game art)
+data/
+
 # run output: battle states, logs
 output/*
 

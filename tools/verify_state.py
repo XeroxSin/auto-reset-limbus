@@ -44,7 +44,7 @@ COLUMNS = ("all", "any", "first", "last")
 RELATIONS = ("before", "after")
 MAX_READS = 3
 REREAD_PAUSE = 1.0                       # icons fade in; also keeps output file names (1 s stamps) apart
-UNIT_WARNING = re.compile(r"unit (\d+):")  # battle_state.BattleReader.read warning prefix
+UNIT_WARNING = re.compile(r"unit (\d+): (\w+)")  # battle_state.BattleReader.read warnings
 
 STATUS = {True: "valid", False: "invalid", None: "unreadable"}
 EXIT = {"valid": 0, "invalid": 1, "unreadable": 3}
@@ -257,17 +257,33 @@ def k_or(vals):
 
 
 class State:
+    """The units of a read, plus what the warnings say can't be trusted.
+
+    A warning about one skill slot ("unit 2: next skill low confidence") only
+    makes checks of that slot unknown; anything else about a unit (a shaky
+    identity) makes every check of that unit unknown, and a warning that names
+    no unit makes the whole read unknown.
+    """
+
     def __init__(self, state):
         self.units = state.get("units", [])
-        self.bad, self.all_bad = set(), False   # unit orders with warnings / a warning about the whole read
+        self.bad_slots, self.bad_units, self.all_bad = {}, set(), False
         for w in state.get("warnings", []):
             m = UNIT_WARNING.match(w)
-            if m:
-                self.bad.add(int(m[1]))
-            else:
+            if not m:
                 self.all_bad = True
+            elif m[2] in SLOTS:
+                self.bad_slots.setdefault(int(m[1]), set()).add(m[2])
+            else:
+                self.bad_units.add(int(m[1]))
 
-    def over(self, ref, test, reasons):
+    def unreadable(self, unit, slot):
+        """slot: the skill slot the check needs, or None when it only needs the order."""
+        order = unit["order"]
+        return (self.all_bad or order in self.bad_units
+                or (slot is not None and slot in self.bad_slots.get(order, ())))
+
+    def over(self, ref, test, reasons, slot=None):
         """Apply test(unit) -> True/False/None to the columns ref selects, combined by its column rule."""
         cols = [u for u in self.units if u["sinner"] == ref["sinner"]]
         if not cols:
@@ -287,8 +303,9 @@ class State:
                 return False
         vals = []
         for u in picked:
-            if self.all_bad or u["order"] in self.bad:
-                reasons.append(f"unit {u['order']} ({u['sinner']}) has warnings")
+            if self.unreadable(u, slot):
+                what = f"{slot} skill" if slot and slot in self.bad_slots.get(u["order"], ()) else "read"
+                reasons.append(f"unit {u['order']} ({u['sinner']}): {what} has warnings")
                 vals.append(None)
             else:
                 vals.append(test(u))
@@ -334,7 +351,7 @@ def check_skill_tier(st, info, reasons):
             return True
         reasons.append(f"unit {u['order']} ({u['sinner']}) {slot} is tier {tier}, expected {fmt(info['tier'])}")
         return False
-    return st.over(info["unit"], test, reasons)
+    return st.over(info["unit"], test, reasons, slot)
 
 
 CHECKS = {
@@ -439,7 +456,7 @@ def live(config, args):
 
     hwnd = bs.find_game(args.title)
     print("loading templates...")
-    reader = bs.BattleReader(args.sin_mode, roster(config))
+    reader = bs.BattleReader(roster(config))
     print("templates loaded")
 
     def read_state(attempt):
@@ -473,8 +490,6 @@ def main():
     ap.add_argument("-d", "--delay", type=float, default=3.0, help="countdown for --live (default 3)")
     ap.add_argument("-t", "--title", default="LimbusCompany",  # capture_screen.WINDOW_TITLE (not imported: cv2)
                     help="game window title")
-    ap.add_argument("--sin-mode", choices=("shape", "color"), default="shape",
-                    help="how sins are told apart while reading tiers (default shape)")
     args = ap.parse_args()
     if not args.states and not args.live:
         ap.error("give at least one state file or --live")
