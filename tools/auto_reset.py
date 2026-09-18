@@ -1,7 +1,8 @@
 """Retry the stage until the battle state matches a verify config.
 
 Loop:
-  1. wait until a battle turn is showing (portraits found, Esc menu closed),
+  1. wait until a battle turn is showing and has finished drawing (Esc menu
+     closed, and the number of portraits found steady across several polls),
   2. capture and read the state:
        readable -> check it against the config (see verify_state.py),
        unclear  -> drag the battlefield upward, so the skill icons end up over
@@ -55,6 +56,8 @@ PAN_FROM = (960, 745)   # 1080p: empty ground under the party, clear of the unit
 PAN_DY = 140            # how far up to drag the battlefield
 POLL = 0.5              # between checks for the battle turn
 SETTLE = 0.5            # after the turn shows up, so the skill icons finish fading in
+STABLE_POLLS = 3        # polls in a row that must agree on the portrait count before reading
+STABLE_TIMEOUT = 15.0   # if the count never settles, read anyway rather than wait forever
 RESUME_SETTLE = 0.5     # after the game comes back to the front
 STATUS_EVERY = 10.0     # "still waiting" log interval
 
@@ -121,20 +124,41 @@ class Game:
 
 
 def wait_for_turn(game, template, button):
+    """Wait for a turn that has finished drawing itself.
+
+    The action bar does not appear all at once: after a reset the portraits fade
+    and scale in over a second or two, and while that runs the number of them a
+    frame shows keeps changing. Reading during it gives a state with most of the
+    party missing, which the config then reports as "<sinner> not found" and
+    resets a roll nobody ever looked at. So wait for the count to hold still
+    (STABLE_POLLS polls agreeing) rather than for the first portrait to appear."""
     start = last = time.monotonic()
     log.info("waiting for the battle turn")
+    counts, since = [], None      # since: when portraits first showed, for the timeout only
     while True:
         frame = game.grab()
         box, score = rs.locate(frame, button)
-        portraits = find_portraits(frame, template)
-        if box is None and portraits:
+        # The menu being up means no turn yet, whatever shows behind it.
+        count = 0 if box is not None else len(find_portraits(frame, template))
+        if counts and count != counts[-1]:
+            log.debug("portrait count %d -> %d after %.1f s", counts[-1], count, time.monotonic() - start)
+        counts.append(count)
+        del counts[:-STABLE_POLLS]
+        since = None if not count else (since or time.monotonic())
+
+        if count and len(counts) == STABLE_POLLS and len(set(counts)) == 1:
+            log.info("battle turn showing after %.1f s (%d portrait(s), steady over %d polls)",
+                     time.monotonic() - start, count, STABLE_POLLS)
+            break
+        if since is not None and time.monotonic() - since >= STABLE_TIMEOUT:
+            log.info("portrait count still changing %.0f s after the first one (%s); reading anyway",
+                     STABLE_TIMEOUT, counts)
             break
         if time.monotonic() - last >= STATUS_EVERY:
             last = time.monotonic()
             log.info("still waiting for the battle turn (%.0f s; menu score %.2f, %d portrait(s))",
-                     last - start, score, len(portraits))
+                     last - start, score, count)
         game.sleep(POLL)
-    log.info("battle turn showing after %.1f s (%d portrait(s))", time.monotonic() - start, len(portraits))
     game.sleep(SETTLE)
 
 

@@ -1,0 +1,10 @@
+{
+  "source": "tests/fixtures/menus/trial_menu.png (resized to 1920x1080)",
+  "box": [
+    692,
+    437,
+    529,
+    106
+  ],
+  "note": "2nd button of the pause menu in the Trial game mode (header 'Trial in Progress'), where Retry Stage sits under Settings instead of third; box is x, y, w, h in 1920x1080. The panel itself spans 693-1380 x 438-541, so the crop stops short of the right-hand watermark to leave the search window room"
+}

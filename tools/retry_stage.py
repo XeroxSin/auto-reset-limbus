@@ -5,18 +5,19 @@ Steps:
      game is actually the foreground window,
   2. unless the menu is already open: move the cursor to an empty spot above
      the menu (so no button pops up hovered), then press Esc,
-  3. find the Retry Stage button (3rd button of the menu) by template; it has
-     a normal and a highlighted (hovered) look, and the better match wins,
+  3. find the Retry Stage button by template; it looks different per game mode
+     and per state (3rd button of the ordinary Esc menu, plain or hovered; 2nd
+     button of the Trial menu), and the better match wins,
   4. move the cursor from wherever it is into the button and click
      (docs/human-mouse-movement.md: data-driven path, scattered landing point,
      Gaussian hold time),
   5. check that the menu went away.
 
 Input only goes to the game: if another window gets focus, the script stops.
-The templates are assets/templates/retry_stage_button.png and
-retry_stage_button_highlighted.png (cut from tests/fixtures/menus/settings_menu.png
-and settings_menu_highlighted.png, 1920x1080 coordinates). Progress goes to the
-logging module; run on its own, this script prints it.
+The templates live in assets/templates/ as retry_stage_button*.png, each cut from
+a fixture in tests/fixtures/menus/ in 1920x1080 coordinates and described by a
+JSON sidecar next to it. Progress goes to the logging module; run on its own,
+this script prints it.
 
 Usage:
     python tools/retry_stage.py                    # 5 s to switch windows, Esc, click Retry Stage
@@ -37,10 +38,15 @@ from humanmouse import human_input as hi
 from portraits import load_screen, to_base
 
 ROOT = Path(__file__).resolve().parent.parent
-TEMPLATES = [ROOT / "assets" / "templates" / name
-             for name in ("retry_stage_button.png", "retry_stage_button_highlighted.png")]
-SEARCH = (700, 300, 520, 420)   # x, y, w, h around the Esc menu buttons (1080p)
-MIN_SCORE = 0.85                # Retry Stage scores 1.0; other buttons <= 0.69, the other look of Retry Stage 0.23-0.69
+TEMPLATES = [ROOT / "assets" / "templates" / name for name in (
+    "retry_stage_button.png",               # ordinary stage: 3rd button of the Esc menu
+    "retry_stage_button_highlighted.png",   # the same button, hovered
+    "retry_stage_button_trial.png",         # Trial mode: 2nd button, a wider panel carrying a description
+    "retry_stage_button_trial_highlighted.png",   # the same panel, hovered
+)]
+SEARCH = (660, 300, 740, 420)   # x, y, w, h covering the button in either menu layout (1080p)
+MIN_SCORE = 0.85                # the button's own look scores 1.0 and no menu at all scores 0.23; a template
+                                # from the other menu layout never gets past 0.38
 TARGET_FRACTION = 0.6           # land inside the middle 60% of the button
 PARK = (960, 185, 300, 60)      # cx, cy, w, h: empty scenery above the Esc menu (menu starts at y ~245)
 MENU_TIMEOUT = 3.0

@@ -1,0 +1,10 @@
+{
+  "source": "tests/fixtures/menus/trial_menu_highlighted.png (resized to 1920x1080)",
+  "box": [
+    692,
+    437,
+    529,
+    106
+  ],
+  "note": "Retry Stage while hovered (orange) in the Trial game mode; the same box as retry_stage_button_trial.png. Unlike the Esc menu pair the two Trial looks still match each other (0.92-0.94), because the panel is mostly text and the hover only repaints behind it - both are kept so either look scores ~1.0, and they share a box so whichever wins locates the same point"
+}
