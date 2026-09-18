@@ -12,10 +12,21 @@ It only looks at the screen and uses the mouse and keyboard. It doesn't read or 
 
 ## Requirements
 
-- Windows. Screen capture and input use the Windows API.
+- Windows, or Linux on an X11 session. See [Linux](#linux) below.
 - Python 3.10 or newer (developed on 3.13).
-- `pip install -r requirements.txt` (installs numpy and opencv-python).
+- `pip install -r requirements.txt` (numpy and opencv-python, plus python-xlib and mss on Linux).
 - The game running in a window titled `LimbusCompany`, visible and not covered by other windows. The tool captures the desktop, so whatever is on top of the game is what it sees.
+
+### Linux
+
+Everything that reads the screen or moves the mouse lives in `tools/backend.py`, which loads `backend_win32.py` on Windows and `backend_x11.py` on Linux. The rest of the code — recognising portraits, identities and skill tiers, and checking them against your config — is the same on both.
+
+The Linux backend finds the window through the EWMH window list, captures with [mss](https://pypi.org/project/mss/) and sends input with the X11 XTEST extension, so the game sees ordinary device input. The game runs under Proton, which makes its window an ordinary X11 window; nothing here has to know about Wine.
+
+Two things to know:
+
+- **Use an X11 session, not Wayland.** XTEST cannot reach native Wayland clients, and there is no way to read another window's pixels without a portal. Under XWayland input works and the game window is a real X window, but grabbing the screen can come back black because XWayland has no composited root window. If frames come out black, set `LIMBUS_X11_CAPTURE=window` to read the game window's own pixels instead — slower, but it does not depend on the root window.
+- **Install `xinput` if you have it.** The tool turns pointer acceleration off on the XTEST pointer while it runs, so one relative count moves the cursor one pixel, and puts your setting back when it exits. Without `xinput` it still works: the movement code measures how far the cursor actually went and corrects as it goes.
 
 ## 1. Create a config
 

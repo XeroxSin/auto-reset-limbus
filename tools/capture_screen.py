@@ -1,9 +1,13 @@
 """Capture the Limbus Company game area to PNG after a countdown.
 
-Grabs the largest centered 16:9 rectangle of the game's client area with a
-GDI BitBlt of the desktop (same approach as Charge Grinder), so the game must
-be visible and uncovered when the shot fires. Frames are saved lossless at
-native resolution, with a JSON sidecar to fill in expected results for tests.
+Grabs the largest centered 16:9 rectangle of the game's client area off the
+screen, so the game must be visible and uncovered when the shot fires. Frames
+are saved lossless at native resolution, with a JSON sidecar to fill in expected
+results for tests.
+
+Finding the window and reading its pixels is the operating system's business, so
+it lives in backend.py (GDI on Windows, X11 on Linux); everything here works the
+same on both.
 
 Usage:
     python tools/capture_screen.py                        # 3 s delay, one shot
@@ -11,131 +15,37 @@ Usage:
     python tools/capture_screen.py -n 5 -i 0.3 -l fadein  # burst of 5 frames
 """
 import argparse
-import ctypes
 import json
 import sys
 import time
-from ctypes import wintypes
 from datetime import datetime
 from pathlib import Path
 
 import cv2
-import numpy as np
+
+import backend
 
 WINDOW_TITLE = "LimbusCompany"
 DEFAULT_OUT = Path(__file__).resolve().parent.parent / "tests" / "fixtures" / "screens"
 
-SRCCOPY = 0x00CC0020
-DIB_RGB_COLORS = 0
-BI_RGB = 0
-
-user32 = ctypes.WinDLL("user32", use_last_error=True)
-gdi32 = ctypes.WinDLL("gdi32", use_last_error=True)
-
-
-class BITMAPINFOHEADER(ctypes.Structure):
-    _fields_ = [
-        ("biSize", wintypes.DWORD),
-        ("biWidth", wintypes.LONG),
-        ("biHeight", wintypes.LONG),
-        ("biPlanes", wintypes.WORD),
-        ("biBitCount", wintypes.WORD),
-        ("biCompression", wintypes.DWORD),
-        ("biSizeImage", wintypes.DWORD),
-        ("biXPelsPerMeter", wintypes.LONG),
-        ("biYPelsPerMeter", wintypes.LONG),
-        ("biClrUsed", wintypes.DWORD),
-        ("biClrImportant", wintypes.DWORD),
-    ]
-
-
-class BITMAPINFO(ctypes.Structure):
-    _fields_ = [("bmiHeader", BITMAPINFOHEADER), ("bmiColors", wintypes.DWORD * 3)]
-
-
-def _sig(fn, restype, *argtypes):
-    fn.restype = restype
-    fn.argtypes = argtypes
-
-
-_sig(user32.FindWindowW, wintypes.HWND, wintypes.LPCWSTR, wintypes.LPCWSTR)
-_sig(user32.GetClientRect, wintypes.BOOL, wintypes.HWND, ctypes.POINTER(wintypes.RECT))
-_sig(user32.ClientToScreen, wintypes.BOOL, wintypes.HWND, ctypes.POINTER(wintypes.POINT))
-_sig(user32.IsIconic, wintypes.BOOL, wintypes.HWND)
-_sig(user32.IsWindow, wintypes.BOOL, wintypes.HWND)
-_sig(user32.GetForegroundWindow, wintypes.HWND)
-_sig(user32.GetDC, wintypes.HDC, wintypes.HWND)
-_sig(user32.ReleaseDC, ctypes.c_int, wintypes.HWND, wintypes.HDC)
-_sig(gdi32.CreateCompatibleDC, wintypes.HDC, wintypes.HDC)
-_sig(gdi32.CreateCompatibleBitmap, wintypes.HBITMAP, wintypes.HDC, ctypes.c_int, ctypes.c_int)
-_sig(gdi32.SelectObject, wintypes.HGDIOBJ, wintypes.HDC, wintypes.HGDIOBJ)
-_sig(gdi32.BitBlt, wintypes.BOOL, wintypes.HDC, ctypes.c_int, ctypes.c_int, ctypes.c_int,
-     ctypes.c_int, wintypes.HDC, ctypes.c_int, ctypes.c_int, wintypes.DWORD)
-_sig(gdi32.GetDIBits, ctypes.c_int, wintypes.HDC, wintypes.HBITMAP, wintypes.UINT,
-     wintypes.UINT, ctypes.c_void_p, ctypes.POINTER(BITMAPINFO), wintypes.UINT)
-_sig(gdi32.DeleteObject, wintypes.BOOL, wintypes.HGDIOBJ)
-_sig(gdi32.DeleteDC, wintypes.BOOL, wintypes.HDC)
-
-
-def set_dpi_aware():
-    """Without this, display scaling makes Windows report and capture scaled pixels."""
-    try:
-        ctypes.windll.shcore.SetProcessDpiAwareness(2)  # per-monitor
-    except (AttributeError, OSError):
-        user32.SetProcessDPIAware()
+set_dpi_aware = backend.set_dpi_aware
+window_exists = backend.window_exists
+is_foreground = backend.is_foreground
+grab = backend.grab
 
 
 def find_window(title=WINDOW_TITLE):
-    hwnd = user32.FindWindowW(None, title)
-    if not hwnd:
-        raise RuntimeError(f"Window '{title}' not found - is the game running?")
-    return hwnd
+    return backend.find_window(title)
 
 
-def game_rect(hwnd):
+def game_rect(win):
     """Largest centered 16:9 rect of the client area, in screen coordinates."""
-    if user32.IsIconic(hwnd):
-        raise RuntimeError("Game window is minimized")
-    rc = wintypes.RECT()
-    user32.GetClientRect(hwnd, ctypes.byref(rc))
-    pt = wintypes.POINT(0, 0)
-    user32.ClientToScreen(hwnd, ctypes.byref(pt))
-    w, h = rc.right - rc.left, rc.bottom - rc.top
-    if w <= 0 or h <= 0:
-        raise RuntimeError("Game window has an empty client area")
+    x, y, w, h = backend.client_rect(win)
     if w * 9 > h * 16:
         gw, gh = h * 16 // 9, h
     else:
         gw, gh = w, w * 9 // 16
-    return pt.x + (w - gw) // 2, pt.y + (h - gh) // 2, gw, gh
-
-
-def grab(rect):
-    """BitBlt a screen rect into a (h, w, 3) BGR array."""
-    x, y, w, h = rect
-    screen_dc = user32.GetDC(None)
-    mem_dc = gdi32.CreateCompatibleDC(screen_dc)
-    bmp = gdi32.CreateCompatibleBitmap(screen_dc, w, h)
-    old = gdi32.SelectObject(mem_dc, bmp)
-    try:
-        if not gdi32.BitBlt(mem_dc, 0, 0, w, h, screen_dc, x, y, SRCCOPY):
-            raise ctypes.WinError(ctypes.get_last_error())
-        bmi = BITMAPINFO()
-        bmi.bmiHeader.biSize = ctypes.sizeof(BITMAPINFOHEADER)
-        bmi.bmiHeader.biWidth = w
-        bmi.bmiHeader.biHeight = -h  # negative = top-down rows
-        bmi.bmiHeader.biPlanes = 1
-        bmi.bmiHeader.biBitCount = 32
-        bmi.bmiHeader.biCompression = BI_RGB
-        buf = np.empty((h, w, 4), dtype=np.uint8)
-        if gdi32.GetDIBits(mem_dc, bmp, 0, h, buf.ctypes.data, ctypes.byref(bmi), DIB_RGB_COLORS) != h:
-            raise RuntimeError("GetDIBits failed")
-        return np.ascontiguousarray(buf[:, :, :3])
-    finally:
-        gdi32.SelectObject(mem_dc, old)
-        gdi32.DeleteObject(bmp)
-        gdi32.DeleteDC(mem_dc)
-        user32.ReleaseDC(None, screen_dc)
+    return x + (w - gw) // 2, y + (h - gh) // 2, gw, gh
 
 
 def save_png(path, img):
@@ -154,6 +64,13 @@ def countdown(seconds):
     print("\rCapturing...        ")
 
 
+def black_frame_hint():
+    if backend.NAME == "x11":
+        return ("frame is almost black - on Wayland the root window cannot be read; "
+                "try LIMBUS_X11_CAPTURE=window or an X11 session")
+    return "frame is almost black - check HDR / exclusive fullscreen"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("-d", "--delay", type=float, default=3.0, help="seconds before the first shot (default 3)")
@@ -167,8 +84,8 @@ def main():
 
     set_dpi_aware()
     try:
-        hwnd = find_window(args.title)
-        game_rect(hwnd)  # fail before the countdown if the window is unusable
+        win = find_window(args.title)
+        game_rect(win)  # fail before the countdown if the window is unusable
     except RuntimeError as e:
         sys.exit(f"error: {e}")
 
@@ -180,13 +97,13 @@ def main():
     for k in range(args.count):
         if k:
             time.sleep(args.interval)
-        if not user32.IsWindow(hwnd):
+        if not window_exists(win):
             sys.exit("error: game window closed")
         try:
-            rect = game_rect(hwnd)  # re-read each frame in case the window moved
+            rect = game_rect(win)  # re-read each frame in case the window moved
         except RuntimeError as e:
             sys.exit(f"error: {e}")
-        foreground = user32.GetForegroundWindow() == hwnd
+        foreground = is_foreground(win)
         img = grab(rect)
 
         suffix = f"_{k:02d}" if args.count > 1 else ""
@@ -197,7 +114,7 @@ def main():
         if not foreground:
             notes.append("game was not the foreground window - shot may show other windows")
         if img.mean() < 2:
-            notes.append("frame is almost black - check HDR / exclusive fullscreen")
+            notes.append(black_frame_hint())
         if rect[2] != 1920:
             notes.append(f"captured at {rect[2]}x{rect[3]}; tests will scale to 1920x1080")
 

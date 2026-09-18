@@ -128,7 +128,7 @@ def capture(hwnd, delay):
     print("Switch to the game now.")
     cap.countdown(delay)
     rect = cap.game_rect(hwnd)
-    if cap.user32.GetForegroundWindow() != hwnd:
+    if not cap.is_foreground(hwnd):
         print("warning: game was not the foreground window", file=sys.stderr)
     return cap.grab(rect), rect
 

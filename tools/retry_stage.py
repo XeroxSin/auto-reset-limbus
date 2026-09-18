@@ -112,11 +112,11 @@ def dry_run(path, tpl):
 
 
 def wait_for_focus(hwnd, timeout=FOCUS_TIMEOUT):
-    if cap.user32.GetForegroundWindow() == hwnd:
+    if cap.is_foreground(hwnd):
         return
     log.info("waiting for the game window to be in front...")
     end = time.monotonic() + timeout
-    while cap.user32.GetForegroundWindow() != hwnd:
+    while not cap.is_foreground(hwnd):
         if time.monotonic() >= end:
             raise RuntimeError(f"the game was not brought to the front within {timeout:g} s")
         time.sleep(0.1)

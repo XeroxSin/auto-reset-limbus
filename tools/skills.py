@@ -57,6 +57,8 @@ LAYERS = {
     "next":   dict(shift=-0.227, y=777, scales=(0.12, 0.13, 0.14), visible=0.55,
                    min_score=0.4, min_margin=0.03),
 }
+
+
 def cb(bgr):
     """Blue-difference chroma (YCrCb): the view every match is made on."""
     return cv2.cvtColor(bgr, cv2.COLOR_BGR2YCrCb)[..., 2]

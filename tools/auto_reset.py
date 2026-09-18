@@ -85,10 +85,10 @@ class Game:
         self.hwnd = hwnd
 
     def focused(self):
-        return cap.user32.GetForegroundWindow() == self.hwnd
+        return cap.is_foreground(self.hwnd)
 
     def check(self):
-        if not cap.user32.IsWindow(self.hwnd):
+        if not cap.window_exists(self.hwnd):
             raise RuntimeError("the game window was closed")
         if not self.focused():
             raise Paused
@@ -98,7 +98,7 @@ class Game:
             return
         console.info("paused: the game is not in front (switch back to continue, Ctrl+C to stop)")
         while not self.focused():
-            if not cap.user32.IsWindow(self.hwnd):
+            if not cap.window_exists(self.hwnd):
                 raise RuntimeError("the game window was closed")
             time.sleep(0.2)
         console.info("resumed")
@@ -262,7 +262,7 @@ def main():
                 log.info("paused; restarting the current step once the game is back")
                 continue
             except RuntimeError as e:
-                if not cap.user32.IsWindow(game.hwnd):
+                if not cap.window_exists(game.hwnd):
                     console.error(f"error: {e}")
                     sys.exit(EXIT_ERROR)
                 log.exception("step failed")

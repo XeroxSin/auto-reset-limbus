@@ -1,2 +1,7 @@
 numpy
 opencv-python
+
+# Linux only: the X11 backend (window lookup and XTEST input, screen capture).
+# On Windows the backend uses the Win32 API through ctypes and needs nothing extra.
+python-xlib; sys_platform == "linux"
+mss; sys_platform == "linux"

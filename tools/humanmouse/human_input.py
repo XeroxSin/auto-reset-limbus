@@ -1,149 +1,36 @@
-"""Human-like mouse/keyboard input for Windows, driven by Charge Grinder's movement model.
+"""Human-like mouse/keyboard input, driven by Charge Grinder's movement model.
 
 Follows docs/human-mouse-movement.md: closed-loop moves planned by
 movement/builder.py (endpoint scatter inside the target box, data-driven
 duration, sub-movements, tremor), played back in real time as relative counts,
-Gaussian press/hold times, and a focus fail-safe. Input is sent with SendInput;
-Charge Grinder's own bridge.dll (Logitech / Razer virtual devices) is not
-replicated.
+Gaussian press/hold times, and a focus fail-safe.
+
+Sending the counts is the operating system's business and lives in backend.py:
+SendInput on Windows, XTEST on Linux. Charge Grinder's own bridge.dll (Logitech
+/ Razer virtual devices) is not replicated on either.
 
 The movement/ package is copied from Charge Grinder 3.5.0 (GPL-3.0).
 """
-import atexit
-import ctypes
 import random
 import time
-from ctypes import wintypes
 
 import numpy as np
+
+import backend
 
 from .movement.builder import build_trajectory
 from .movement.inertia import get_inherited_velocity, update_inertia
 from .movement.pointer_gain import execute_trajectory, update_pointer_scale
 
-user32 = ctypes.WinDLL("user32", use_last_error=True)
-
-INPUT_MOUSE, INPUT_KEYBOARD = 0, 1
-MOUSEEVENTF_MOVE = 0x0001
-MOUSEEVENTF_LEFTDOWN, MOUSEEVENTF_LEFTUP = 0x0002, 0x0004
-MOUSEEVENTF_RIGHTDOWN, MOUSEEVENTF_RIGHTUP = 0x0008, 0x0010
-KEYEVENTF_KEYUP, KEYEVENTF_SCANCODE = 0x0002, 0x0008
-
-SPI_GETMOUSE, SPI_SETMOUSE = 0x0003, 0x0004
-SPI_GETMOUSESPEED, SPI_SETMOUSESPEED = 0x0070, 0x0071
-
-# Set-1 scancodes (games generally read scancodes, not virtual keys)
-SCANCODES = {"esc": 0x01, "enter": 0x1C, "space": 0x39, "tab": 0x0F}
-
 WINDOW_TITLE = "LimbusCompany"
 
-
-class MOUSEINPUT(ctypes.Structure):
-    _fields_ = [("dx", wintypes.LONG), ("dy", wintypes.LONG), ("mouseData", wintypes.DWORD),
-                ("dwFlags", wintypes.DWORD), ("time", wintypes.DWORD), ("dwExtraInfo", ctypes.c_size_t)]
-
-
-class KEYBDINPUT(ctypes.Structure):
-    _fields_ = [("wVk", wintypes.WORD), ("wScan", wintypes.WORD), ("dwFlags", wintypes.DWORD),
-                ("time", wintypes.DWORD), ("dwExtraInfo", ctypes.c_size_t)]
-
-
-class HARDWAREINPUT(ctypes.Structure):
-    _fields_ = [("uMsg", wintypes.DWORD), ("wParamH", wintypes.DWORD), ("wParamL", wintypes.DWORD)]
-
-
-class _INPUTUNION(ctypes.Union):
-    _fields_ = [("mi", MOUSEINPUT), ("ki", KEYBDINPUT), ("hi", HARDWAREINPUT)]
-
-
-class INPUT(ctypes.Structure):
-    _anonymous_ = ("u",)
-    _fields_ = [("type", wintypes.DWORD), ("u", _INPUTUNION)]
-
-
-user32.SendInput.argtypes = (wintypes.UINT, ctypes.POINTER(INPUT), ctypes.c_int)
-user32.SendInput.restype = wintypes.UINT
-user32.GetForegroundWindow.restype = wintypes.HWND
-user32.GetWindowTextLengthW.argtypes = (wintypes.HWND,)
-user32.GetWindowTextW.argtypes = (wintypes.HWND, wintypes.LPWSTR, ctypes.c_int)
-user32.GetCursorPos.argtypes = (ctypes.POINTER(wintypes.POINT),)
-
-
-def _send(inp):
-    if user32.SendInput(1, ctypes.byref(inp), ctypes.sizeof(INPUT)) != 1:
-        raise ctypes.WinError(ctypes.get_last_error())
-
-
-def send_mouse_rel(dx, dy):
-    inp = INPUT(type=INPUT_MOUSE)
-    inp.mi = MOUSEINPUT(dx=int(dx), dy=int(dy), dwFlags=MOUSEEVENTF_MOVE)
-    _send(inp)
-
-
-def send_mouse_button(button, down):
-    flags = {("left", True): MOUSEEVENTF_LEFTDOWN, ("left", False): MOUSEEVENTF_LEFTUP,
-             ("right", True): MOUSEEVENTF_RIGHTDOWN, ("right", False): MOUSEEVENTF_RIGHTUP}[(button, down)]
-    inp = INPUT(type=INPUT_MOUSE)
-    inp.mi = MOUSEINPUT(dwFlags=flags)
-    _send(inp)
-
-
-def send_key(key, down):
-    inp = INPUT(type=INPUT_KEYBOARD)
-    inp.ki = KEYBDINPUT(wScan=SCANCODES[key], dwFlags=KEYEVENTF_SCANCODE | (0 if down else KEYEVENTF_KEYUP))
-    _send(inp)
-
-
-def get_position():
-    pt = wintypes.POINT()
-    user32.GetCursorPos(ctypes.byref(pt))
-    return pt.x, pt.y
-
-
-def virtual_screen_bounds():
-    x, y = user32.GetSystemMetrics(76), user32.GetSystemMetrics(77)
-    return x, y, x + user32.GetSystemMetrics(78), y + user32.GetSystemMetrics(79)
-
-
-def foreground_title():
-    hwnd = user32.GetForegroundWindow()
-    buf = ctypes.create_unicode_buffer(user32.GetWindowTextLengthW(hwnd) + 1)
-    user32.GetWindowTextW(hwnd, buf, len(buf))
-    return buf.value
-
-
-# --- Pointer settings guard (1:1 relative motion) --------------------------------
-
-class _MouseSettings:
-    """Turns off 'Enhance pointer precision' and sets speed 10/20 so one relative
-    count = one pixel. fWinIni=0: not persisted, so a crash can't leave it changed
-    past logoff."""
-
-    def __init__(self):
-        self._saved = None
-
-    def apply(self):
-        if self._saved is not None:
-            return
-        accel = (ctypes.c_int * 3)()
-        speed = ctypes.c_int()
-        user32.SystemParametersInfoW(SPI_GETMOUSE, 0, accel, 0)
-        user32.SystemParametersInfoW(SPI_GETMOUSESPEED, 0, ctypes.byref(speed), 0)
-        self._saved = (list(accel), speed.value)
-        user32.SystemParametersInfoW(SPI_SETMOUSE, 0, (ctypes.c_int * 3)(0, 0, 0), 0)
-        user32.SystemParametersInfoW(SPI_SETMOUSESPEED, 0, ctypes.c_void_p(10), 0)
-
-    def restore(self):
-        if self._saved is None:
-            return
-        accel, speed = self._saved
-        user32.SystemParametersInfoW(SPI_SETMOUSE, 0, (ctypes.c_int * 3)(*accel), 0)
-        user32.SystemParametersInfoW(SPI_SETMOUSESPEED, 0, ctypes.c_void_p(speed), 0)
-        self._saved = None
-
-
-mouse_settings = _MouseSettings()
-atexit.register(mouse_settings.restore)
+send_mouse_rel = backend.send_mouse_rel
+send_mouse_button = backend.send_mouse_button
+send_key = backend.send_key
+get_position = backend.get_position
+virtual_screen_bounds = backend.virtual_screen_bounds
+foreground_title = backend.foreground_title
+mouse_settings = backend.mouse_settings   # the backend restores it at exit
 
 
 # --- Fail-safe ------------------------------------------------------------------
