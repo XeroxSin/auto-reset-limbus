@@ -4,8 +4,9 @@ docs/
 # tests and fixtures (kept locally)
 tests/
 
-# personal configs
-configs/mine.json
+# configs: only the documented example is tracked, never personal ones
+configs/*
+!configs/config.json
 
 # labelled screenshots for checking the reader (game art)
 data/
